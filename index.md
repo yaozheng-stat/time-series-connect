@@ -16,21 +16,6 @@ title: Home
   </div>
 </section>
 
-<section class="google-section acknowledgments">
-  <div class="wrap narrow">
-    <h2>Organized by</h2>
-    <div class="partner-logos" aria-label="Organizing partners">
-      <a class="partner-card uconn-card" href="https://uconn.edu/" target="_blank" rel="noopener">
-        <img src="{{ '/assets/images/uconn-spring-fog.jpg' | relative_url }}" alt="University of Connecticut">
-        <span>University of Connecticut</span>
-      </a>
-      <a class="partner-card asa-card" href="https://community.amstat.org/businessandeconomicstatisticssection/home" target="_blank" rel="noopener">
-        <img src="{{ '/assets/images/84ef319a0cdeb09b89f0d86d22a5b23c.jpg' | relative_url }}" alt="ASA Business and Economic Statistics Section">
-      </a>
-    </div>
-  </div>
-</section>
-
 <section class="google-section home-quick-links">
   <div class="wrap">
     <div class="section-heading">
@@ -53,6 +38,21 @@ title: Home
       <a class="home-link-card" href="{{ '/news-opportunities/' | relative_url }}">
         <span>News &amp; Opportunities</span>
         <small>Find announcements, calls, and opportunities.</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="google-section acknowledgments">
+  <div class="wrap narrow">
+    <h2>Organized by</h2>
+    <div class="partner-logos" aria-label="Organizing partners">
+      <a class="partner-card uconn-card" href="https://uconn.edu/" target="_blank" rel="noopener">
+        <img src="{{ '/assets/images/uconn-spring-fog.jpg' | relative_url }}" alt="University of Connecticut">
+        <span>University of Connecticut</span>
+      </a>
+      <a class="partner-card asa-card" href="https://community.amstat.org/businessandeconomicstatisticssection/home" target="_blank" rel="noopener">
+        <img src="{{ '/assets/images/84ef319a0cdeb09b89f0d86d22a5b23c.jpg' | relative_url }}" alt="ASA Business and Economic Statistics Section">
       </a>
     </div>
   </div>

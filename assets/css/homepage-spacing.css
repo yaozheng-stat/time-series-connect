@@ -32,6 +32,7 @@
 
 .home-about{
   padding-top:28px;
+  padding-bottom:18px;
 }
 
 .home-about__grid{
@@ -54,7 +55,8 @@ p,
 }
 
 .home-quick-links{
-  padding-top:16px;
+  padding-top:10px;
+  padding-bottom:30px;
 }
 
 .home-link-grid{
@@ -75,7 +77,7 @@ p,
 }
 
 .acknowledgments{
-  padding-top:12px;
+  padding-top:28px;
   padding-bottom:24px;
 }
 
