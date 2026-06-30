@@ -139,3 +139,14 @@ p,
     min-height:auto;
   }
 }
+
+.asa-card{
+  padding:8px;
+}
+
+.asa-card img{
+  width:100%;
+  height:112px;
+  max-height:none;
+  object-fit:contain;
+}
