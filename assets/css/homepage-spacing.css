@@ -95,7 +95,10 @@ p,
 }
 
 .uconn-card img{
-  height:112px;
+  width:100%;
+  height:140px;
+  max-height:none;
+  object-fit:cover;
 }
 
 @media(max-width:900px){
@@ -144,6 +147,7 @@ p,
 
 .asa-card{
   padding:8px;
+  min-height:140px;
 }
 
 .asa-card img{
