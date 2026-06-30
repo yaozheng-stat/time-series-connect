@@ -1,0 +1,139 @@
+/* Compact homepage and navigation spacing. Loaded last so it can override earlier styles. */
+.masthead__inner{
+  min-height:56px;
+  padding-left:12px;
+  padding-right:24px;
+}
+
+.site-logo{
+  width:34px;
+  height:34px;
+}
+
+.site-title{
+  gap:8px;
+}
+
+.site-title__name{
+  font-size:1.08rem;
+}
+
+.site-nav a{
+  padding:16px 0;
+}
+
+.google-section{
+  padding:24px 0;
+}
+
+.google-section + .google-section{
+  padding-top:16px;
+}
+
+.home-about{
+  padding-top:28px;
+}
+
+.home-about__grid{
+  gap:34px;
+}
+
+h2{
+  margin-bottom:10px;
+}
+
+p,
+.google-section p,
+.content-card p,
+.content-card li{
+  margin-bottom:8px;
+}
+
+.section-heading{
+  margin-bottom:18px;
+}
+
+.home-quick-links{
+  padding-top:16px;
+}
+
+.home-link-grid{
+  gap:12px;
+}
+
+.home-link-card{
+  min-height:118px;
+  padding:18px;
+}
+
+.home-link-card span{
+  font-size:1.02rem;
+}
+
+.home-link-card small{
+  font-size:.94rem;
+}
+
+.acknowledgments{
+  padding-top:12px;
+  padding-bottom:24px;
+}
+
+.partner-logos{
+  margin-top:10px;
+  gap:20px;
+}
+
+.partner-card,
+.uconn-card,
+.asa-card{
+  min-height:104px;
+}
+
+.uconn-card img{
+  height:112px;
+}
+
+@media(max-width:900px){
+  .masthead__inner{
+    min-height:auto;
+    padding:10px 24px 12px 12px;
+    gap:8px;
+  }
+
+  .site-nav a{
+    padding:0 0 6px;
+  }
+
+  .google-section{
+    padding:20px 0;
+  }
+
+  .google-section + .google-section{
+    padding-top:12px;
+  }
+
+  .home-about__grid{
+    gap:16px;
+  }
+}
+
+@media(max-width:560px){
+  .masthead__inner{
+    padding-left:10px;
+    padding-right:18px;
+  }
+
+  .site-logo{
+    width:32px;
+    height:32px;
+  }
+
+  .site-title__name{
+    font-size:1rem;
+  }
+
+  .home-link-card{
+    min-height:auto;
+  }
+}
