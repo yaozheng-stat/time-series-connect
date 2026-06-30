@@ -71,13 +71,13 @@ p{margin:0 0 12pt}
 .hero-title-block{padding:82px 28px 78px;text-align:center}
 .hero-title-block h1{
   font-family:Comfortaa,Arial,sans-serif;
-  font-size:clamp(3rem,7.2vw,6.6rem);
+  font-size:clamp(2.5rem,5vw,4.8rem);
   color:#fff;line-height:1.07;letter-spacing:.01em;margin:0;text-align:center;
   text-shadow:0 2px 12px rgba(0,0,0,.30);
 }
 .subtitle{
   font-family:'EB Garamond',Georgia,serif;font-style:italic;font-weight:400;
-  font-size:clamp(1.55rem,3vw,2.45rem);color:#fff;margin:20px 0 0;text-align:center;
+  font-size:clamp(1.15rem,2vw,1.6rem);color:#fff;margin:8px 0 0;text-align:center;
   text-shadow:0 2px 10px rgba(0,0,0,.25);
 }
 
