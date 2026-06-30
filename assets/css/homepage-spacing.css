@@ -82,8 +82,10 @@ p,
 }
 
 .partner-logos{
-  margin-top:10px;
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
   gap:20px;
+  align-items:center;
 }
 
 .partner-card,
