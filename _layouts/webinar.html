@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<section class="page-body plain-page">
+  <div class="wrap two-column">
+    <aside class="sidebar-card">
+      <p class="label">Date</p>
+      <p><strong>{{ page.date | date: "%B %-d, %Y" }}</strong></p>
+      {% if page.time %}<p class="label">Time</p><p>{{ page.time }}</p>{% endif %}
+      {% if page.registration_url %}<a class="button ghost" href="{{ page.registration_url }}">Register / Event Link</a>{% endif %}
+      {% if page.slides_url %}<a class="button ghost" href="{{ page.slides_url }}">Slides</a>{% endif %}
+      {% if page.youtube_url %}<a class="button ghost" href="{{ page.youtube_url }}">Recording</a>{% endif %}
+      {% if page.materials_url %}<a class="button ghost" href="{{ page.materials_url }}">Materials</a>{% endif %}
+    </aside>
+    <article class="content-card">
+      <header class="plain-page-title">
+        <p class="eyebrow">Webinar</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.speaker %}<p class="muted">{{ page.speaker }}{% if page.affiliation %}, {{ page.affiliation }}{% endif %}</p>{% endif %}
+      </header>
+      {{ content }}
+    </article>
+  </div>
+</section>

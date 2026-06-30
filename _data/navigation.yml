@@ -1,0 +1,13 @@
+main:
+  - title: "Home"
+    url: "/"
+  - title: "Upcoming Webinars"
+    url: "/webinars/upcoming/"
+  - title: "Past Webinars"
+    url: "/webinars/archive/"
+  - title: "Education Blog"
+    url: "/education-blog/"
+  - title: "News & Opportunities"
+    url: "/news-opportunities/"
+  - title: "About Us"
+    url: "/about-us/"

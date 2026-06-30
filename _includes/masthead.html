@@ -1,0 +1,13 @@
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="site-title" href="{{ '/' | relative_url }}">
+      <img class="site-logo" src="{{ '/assets/images/727e887e96b1941f1dfcb75f3594c94d.jpg' | relative_url }}" alt="Time Series Connect logo">
+      <span>{{ site.title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      {% for item in site.data.navigation.main %}
+        <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

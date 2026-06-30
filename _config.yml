@@ -1,0 +1,38 @@
+title: "Time Series Connect"
+name: "Time Series Connect"
+description: "An interdisciplinary online seminar series focused on time series research, education, and applications."
+url: ""
+baseurl: ""
+repository: ""
+
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+include:
+  - _pages
+
+collections:
+  webinars:
+    output: true
+    permalink: /webinars/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "webinars"
+    values:
+      layout: webinar
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: single
+
+footer:
+  email: "timeseriesconnect@gmail.com"
