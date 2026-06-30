@@ -1,20 +1,20 @@
-/* Navigation refinements: text-only brand, subtitle, shorter labels, and no image strip. */
+/* Navigation refinements: logo + title only, no subtitle, no image strip. */
 .masthead:before{
   display:none;
 }
 
 .masthead__inner{
   max-width:none;
-  min-height:76px;
-  padding-left:0;
+  min-height:72px;
+  padding-left:16px;
   padding-right:28px;
 }
 
 .site-title{
   display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:0;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
   padding-left:0;
   margin-left:0;
   color:#202124;
@@ -26,34 +26,38 @@
   text-decoration:none;
 }
 
+.site-logo{
+  display:block;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  object-fit:cover;
+  flex:0 0 auto;
+}
+
 .site-title__name{
   font-family:Comfortaa,Arial,sans-serif;
-  font-size:1.22rem;
+  font-size:1.18rem;
   font-weight:700;
   letter-spacing:.01em;
   line-height:1.15;
 }
 
 .site-title__tagline{
-  margin-top:3px;
-  color:#5f6368;
-  font-size:.78rem;
-  font-weight:500;
-  letter-spacing:.03em;
-  line-height:1.1;
-}
-
-.site-logo{
   display:none;
 }
 
 .site-nav a{
-  padding:25px 0 22px;
+  padding:24px 0 21px;
+}
+
+.home-about{
+  padding-top:56px;
 }
 
 @media(max-width:900px){
   .masthead__inner{
-    padding-left:0;
+    padding-left:16px;
     padding-right:28px;
   }
 
@@ -64,14 +68,16 @@
 
 @media(max-width:560px){
   .masthead__inner{
+    padding-left:14px;
     padding-right:20px;
   }
 
   .site-title__name{
-    font-size:1.08rem;
+    font-size:1.05rem;
   }
 
-  .site-title__tagline{
-    font-size:.72rem;
+  .site-logo{
+    width:34px;
+    height:34px;
   }
 }
