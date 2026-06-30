@@ -91,7 +91,6 @@ p,
 .partner-card,
 .uconn-card,
 .asa-card{
-  padding:8px;
   min-height:140px;
 }
 
@@ -143,10 +142,20 @@ p,
   }
 }
 
+.asa-card{
+  padding:8px;
+}
+
 .asa-card img{
   width:auto;
   height:112px;
   max-width:100%;
   max-height:none;
   object-fit:contain;
+}
+
+@media(max-width:900px){
+  .partner-logos{
+    grid-template-columns:1fr;
+  }
 }
