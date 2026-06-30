@@ -48,7 +48,7 @@ p{margin:0 0 12pt}
   border-bottom:1px solid rgba(218,220,224,.95);
   box-shadow:0 1px 3px rgba(60,64,67,.12);
 }
-.masthead__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:70px}
+.masthead__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:58px}
 .site-title{
   font-family:Roboto,Arial,sans-serif;
   color:#3c4043;font-size:1.18rem;font-weight:400;text-decoration:none;
@@ -58,17 +58,17 @@ p{margin:0 0 12pt}
 .site-nav{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
 .site-nav a{
   font-family:Roboto,Arial,sans-serif;color:#3c4043;font-size:.95rem;text-decoration:none;
-  border-bottom:3px solid transparent;padding:24px 0 20px;
+  border-bottom:3px solid transparent;padding:18px 0 15px;
 }
 .site-nav a.active,.site-nav a:hover{color:var(--blue);border-bottom-color:var(--blue);text-decoration:none}
 
 /* Home hero: only homepage has banner */
 .google-hero{
-  min-height:392px;display:flex;align-items:center;
+  min-height:170px;display:flex;align-items:center;
   background:linear-gradient(0deg,rgba(0,0,0,.18),rgba(0,0,0,.18)),url('../images/de2bb4988d4de55f5693b9c26674f914.jpg');
   background-size:cover;background-position:center center;color:#fff;
 }
-.hero-title-block{padding:82px 28px 78px;text-align:center}
+.hero-title-block{padding:22px 28px;text-align:center}
 .hero-title-block h1{
   font-family:Comfortaa,Arial,sans-serif;
   font-size:clamp(2.5rem,5vw,4.8rem);

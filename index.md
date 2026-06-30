@@ -4,7 +4,7 @@ title: Home
 ---
 <section class="google-hero">
   <div class="wrap hero-title-block">
-    <h1>Time Series<br>Connect</h1>
+    <h1>Time Series Connect</h1>
     <p class="subtitle">Interdisciplinary Seminars</p>
   </div>
 </section>
