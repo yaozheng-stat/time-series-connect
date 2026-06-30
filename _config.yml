@@ -1,9 +1,9 @@
 title: "Time Series Connect"
 name: "Time Series Connect"
 description: "An interdisciplinary online seminar series focused on time series research, education, and applications."
-url: ""
-baseurl: ""
-repository: ""
+url: "https://yaozheng-stat.github.io"
+baseurl: "/time-series-connect"
+repository: "yaozheng-stat/time-series-connect"
 
 markdown: kramdown
 highlighter: rouge
