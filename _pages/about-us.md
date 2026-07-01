@@ -10,9 +10,9 @@ Time Series Connect is an open community for learning and discussing time series
 
 ### Faculty
 
-- Yao Zheng, Associate Professor, Department of Statistics; ASA BES Liaison
-- Dongjin Song, Associate Professor, School of Computing
-- Jungbin Hwang, Associate Professor, Department of Economics
+- Yao Zheng, Department of Statistics; ASA BES Liaison
+- Dongjin Song, School of Computing
+- Jungbin Hwang, Department of Economics
 
 ### Student Organizers
 
@@ -23,9 +23,9 @@ Time Series Connect is an open community for learning and discussing time series
 
 ### Faculty Advisors
 
-- Nalini Ravishanker, Professor, Department of Statistics
-- Jinbo Bi, Professor, School of Computing
-- Chihwa Kao, Professor, Department of Economics
+- Nalini Ravishanker, Department of Statistics
+- Jinbo Bi, School of Computing
+- Chihwa Kao, Department of Economics
 
 ## Get Involved
 
