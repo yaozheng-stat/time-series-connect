@@ -1,0 +1,29 @@
+{% assign webinar = include.webinar %}
+{% assign mode = include.mode | default: 'archive' %}
+{% assign card_class = mode | append: '-event-card' %}
+{% assign abstract_limit = include.abstract_limit | default: 220 %}
+{% assign display_title = webinar.title %}
+{% if mode == 'archive' and webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
+  {% assign display_title = webinar.speaker %}
+{% endif %}
+
+<article class="{{ card_class }}">
+  <div class="{{ card_class }}__date" aria-label="{{ webinar.date | date: '%B %-d, %Y' }}">
+    <span class="{{ card_class }}__month">{{ webinar.date | date: "%b" }}</span>
+    <span class="{{ card_class }}__day">{{ webinar.date | date: "%d" }}</span>
+    <span class="{{ card_class }}__year">{{ webinar.date | date: "%Y" }}</span>
+  </div>
+  <div class="{{ card_class }}__body">
+    <div class="{{ card_class }}__meta">
+      {% if webinar.time and webinar.time != "" and webinar.time != "Time TBD" %}<span>{{ webinar.time }}</span>{% endif %}
+    </div>
+    <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
+    {% if display_title != webinar.speaker %}
+      {% include webinar_speaker.html webinar=webinar class=card_class | append: "__speaker" %}
+    {% endif %}
+    {% include archive_abstract.html webinar=webinar limit=abstract_limit %}
+    <div class="{{ card_class }}__actions">
+      {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
+    </div>
+  </div>
+</article>

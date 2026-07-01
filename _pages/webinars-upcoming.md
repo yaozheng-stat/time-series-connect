@@ -19,24 +19,7 @@ permalink: /webinars/upcoming/
   {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
   {% if webinar_date >= today %}
     {% assign count = count | plus: 1 %}
-    <article class="upcoming-event-card">
-      <div class="upcoming-event-card__date" aria-label="{{ webinar.date | date: '%B %-d, %Y' }}">
-        <span class="upcoming-event-card__month">{{ webinar.date | date: "%b" }}</span>
-        <span class="upcoming-event-card__day">{{ webinar.date | date: "%d" }}</span>
-        <span class="upcoming-event-card__year">{{ webinar.date | date: "%Y" }}</span>
-      </div>
-      <div class="upcoming-event-card__body">
-        <div class="upcoming-event-card__meta">
-          {% if webinar.time %}<span>{{ webinar.time }}</span>{% endif %}
-        </div>
-        <h2><a href="{{ webinar.url | relative_url }}">{{ webinar.title }}</a></h2>
-        {% include webinar_speaker.html webinar=webinar class="upcoming-event-card__speaker" %}
-        {% include archive_abstract.html webinar=webinar limit=upcoming_abstract_limit %}
-        <div class="upcoming-event-card__actions">
-          {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
-        </div>
-      </div>
-    </article>
+    {% include webinar_card.html webinar=webinar mode="upcoming" abstract_limit=upcoming_abstract_limit %}
   {% endif %}
 {% endfor %}
 {% if count == 0 %}
