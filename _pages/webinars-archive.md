@@ -7,6 +7,7 @@ permalink: /webinars/archive/
 
 {% assign today = site.time | date: '%Y-%m-%d' %}
 {% assign webinars = site.webinars | sort: 'date' | reverse %}
+{% assign archive_abstract_limit = 220 %}
 <div class="archive-event-list">
 {% assign count = 0 %}
 {% for webinar in webinars %}
@@ -29,10 +30,14 @@ permalink: /webinars/archive/
         </div>
         <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
         {% if webinar.speaker and webinar.speaker != "" and display_title != webinar.speaker %}
-          <p class="archive-event-card__speaker"><strong>{{ webinar.speaker }}</strong></p>
+          <p class="archive-event-card__speaker"><strong>{{ webinar.speaker }}</strong>{% if webinar.affiliation and webinar.affiliation != "" %}, {{ webinar.affiliation }}{% endif %}</p>
         {% endif %}
-        {% assign archive_summary = webinar.abstract | default: webinar.summary | default: webinar.excerpt %}
-        <p>{{ archive_summary | strip_html | truncate: 220 }}</p>
+        {% assign archive_summary = webinar.abstract | default: webinar.summary | default: webinar.excerpt | strip_html | normalize_whitespace %}
+        {% if archive_summary.size > archive_abstract_limit %}
+          <p>{{ archive_summary | truncate: archive_abstract_limit, "..." }}</p>
+        {% else %}
+          <p>{{ archive_summary }}</p>
+        {% endif %}
         <div class="archive-event-card__actions">
           <a class="google-button" href="{{ webinar.url | relative_url }}">Event details</a>
           {% if webinar.speaker_url and webinar.speaker_url != "" %}
