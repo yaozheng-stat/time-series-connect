@@ -10,7 +10,7 @@ title: Home
     </div>
     <div>
       <p>We are an online interdisciplinary seminar series that brings together researchers, practitioners, and students from fields such as statistics, computer science, economics, business, engineering, and other data-rich disciplines to share insights and advances in time series analysis.</p>
-      <p>The series is run by faculty at the University of Connecticut in partnership with the Business &amp; Economic Statistics Section of the American Statistical Association.</p>
+      <p> The series is hosted by the University of Connecticut in partnership with the Business and Economic Statistics Section of the American Statistical Association (ASA BES).</p>
       <p>You can watch recorded events on our <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube channel</a>.</p>
     </div>
   </div>
