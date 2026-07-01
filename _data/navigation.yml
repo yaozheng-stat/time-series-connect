@@ -7,7 +7,5 @@ main:
     url: "/webinars/archive/"
   - title: "Education"
     url: "/education-blog/"
-  - title: "News"
-    url: "/news-opportunities/"
   - title: "About"
     url: "/about-us/"
