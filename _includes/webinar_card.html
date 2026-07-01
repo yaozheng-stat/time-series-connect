@@ -1,6 +1,7 @@
 {% assign webinar = include.webinar %}
 {% assign mode = include.mode | default: 'archive' %}
 {% assign card_class = mode | append: '-event-card' %}
+{% assign speaker_class = card_class | append: '__speaker' %}
 {% assign abstract_limit = include.abstract_limit | default: 220 %}
 {% assign display_title = webinar.title %}
 {% if mode == 'archive' and webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
@@ -19,7 +20,7 @@
     </div>
     <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
     {% if display_title != webinar.speaker %}
-      {% include webinar_speaker.html webinar=webinar class=card_class | append: "__speaker" %}
+      {% include webinar_speaker.html webinar=webinar class=speaker_class %}
     {% endif %}
     {% include archive_abstract.html webinar=webinar limit=abstract_limit %}
     <div class="{{ card_class }}__actions">
