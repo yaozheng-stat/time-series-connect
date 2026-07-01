@@ -4,13 +4,15 @@ speaker: "Hie Joo Ahn"
 affiliation: "Principal Economist, Federal Reserve Board"
 date: 2026-03-16
 time: "11:00 AM - 12:30 PM ET"
-abstract: "Aggregate U.S. labor market dynamics are well approximated by a dual labor market supplemented with a third, predominantly home-production, segment."
-summary: "A Hidden Markov Model study of U.S. labor market transitions uncovers a three-segment structure behind dual labor market dynamics."
 speaker_url: "https://sites.google.com/site/hiejooahn/"
 registration_url: ""
 slides_url: ""
 youtube_url: "https://www.youtube.com/watch?v=yEtRCDgbWcc"
 materials_url: ""
+materials:
+  - title: "Manuscript"
+    url: "https://drive.google.com/file/d/1C5JuPgj7YXiRdcrbpzlgGBuA46mSoizr/view?usp=drive_link"
+
 ---
 ## Abstract
 

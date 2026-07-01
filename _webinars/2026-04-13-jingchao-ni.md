@@ -4,13 +4,15 @@ speaker: "Jingchao Ni"
 affiliation: "Assistant Professor, Department of Computer Science, University of Houston"
 date: 2026-04-13
 time: "11:00 AM - 12:30 PM ET"
-abstract: "Time series analysis has progressed from traditional autoregressive models to deep learning, Transformers, and foundation models, including large language models and large vision models."
-summary: "An overview of cross-modal knowledge transfer for time series AI, with emphasis on large vision models and time series forecasting."
 speaker_url: "https://nijingchao.github.io/"
 registration_url: ""
 slides_url: ""
 youtube_url: "https://www.youtube.com/watch?v=WFPnCE8abKQ"
 materials_url: ""
+materials:
+  - title: "Manuscript"
+    url: "https://arxiv.org/pdf/2502.08869"
+
 ---
 ## Abstract
 
