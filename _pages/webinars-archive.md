@@ -33,6 +33,17 @@ permalink: /webinars/archive/
         {% if webinar.speaker and webinar.speaker != "" and display_title != webinar.speaker %}
           <p class="archive-event-card__speaker"><strong>{{ webinar.speaker }}</strong>{% if webinar.affiliation and webinar.affiliation != "" %}, {{ webinar.affiliation }}{% endif %}</p>
         {% endif %}
+        {% assign abstract_split = webinar.content | split: '<h2 id="abstract">Abstract</h2>' %}
+        {% assign abstract_section = '' %}
+        {% if abstract_split.size > 1 %}
+          {% assign abstract_section = abstract_split[1] | split: '<h2 id="speaker-bio">Speaker Bio</h2>' | first %}
+        {% endif %}
+        {% assign archive_summary = abstract_section | default: webinar.excerpt | strip_html | normalize_whitespace %}
+        {% if archive_summary.size > archive_abstract_limit %}
+          <p>{{ archive_summary | truncate: archive_abstract_limit, "..." }}</p>
+        {% else %}
+          <p>{{ archive_summary }}</p>
+        {% endif %}
         {% include archive_abstract.html webinar=webinar limit=archive_abstract_limit %}
         <div class="archive-event-card__actions">
           {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
