@@ -29,8 +29,8 @@ permalink: /webinars/archive/
           {% if webinar.time and webinar.time != "" and webinar.time != "Time TBD" %}<span>{{ webinar.time }}</span>{% endif %}
         </div>
         <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
-        {% if display_title != webinar.speaker %}
-          {% include webinar_speaker.html webinar=webinar class="archive-event-card__speaker" %}
+        {% if webinar.speaker and webinar.speaker != "" and display_title != webinar.speaker %}
+          <p class="archive-event-card__speaker"><strong>{{ webinar.speaker }}</strong>{% if webinar.affiliation and webinar.affiliation != "" %}, {{ webinar.affiliation }}{% endif %}</p>
         {% endif %}
         {% include archive_abstract.html webinar=webinar limit=archive_abstract_limit %}
         <div class="archive-event-card__actions">
