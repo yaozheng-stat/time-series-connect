@@ -29,34 +29,12 @@ permalink: /webinars/archive/
           {% if webinar.time and webinar.time != "" and webinar.time != "Time TBD" %}<span>{{ webinar.time }}</span>{% endif %}
         </div>
         <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
-        {% if webinar.speaker and webinar.speaker != "" and display_title != webinar.speaker %}
-          <p class="archive-event-card__speaker"><strong>{{ webinar.speaker }}</strong>{% if webinar.affiliation and webinar.affiliation != "" %}, {{ webinar.affiliation }}{% endif %}</p>
+        {% if display_title != webinar.speaker %}
+          {% include webinar_speaker.html webinar=webinar class="archive-event-card__speaker" %}
         {% endif %}
-        {% assign archive_summary = webinar.abstract | default: webinar.summary | default: webinar.excerpt | strip_html | normalize_whitespace %}
-        {% if archive_summary.size > archive_abstract_limit %}
-          <p>{{ archive_summary | truncate: archive_abstract_limit, "..." }}</p>
-        {% else %}
-          <p>{{ archive_summary }}</p>
-        {% endif %}
+        {% include archive_abstract.html webinar=webinar limit=archive_abstract_limit %}
         <div class="archive-event-card__actions">
-          <a class="google-button" href="{{ webinar.url | relative_url }}">Event details</a>
-          {% if webinar.speaker_url and webinar.speaker_url != "" %}
-            <a class="google-button outline" href="{{ webinar.speaker_url }}" target="_blank" rel="noopener">Speaker Website</a>
-          {% endif %}
-          {% if webinar.youtube_url and webinar.youtube_url != "" %}
-            <a class="google-button outline" href="{{ webinar.youtube_url }}" target="_blank" rel="noopener">Recording</a>
-          {% endif %}
-          {% if webinar.slides_url and webinar.slides_url != "" %}
-            <a class="google-button outline" href="{{ webinar.slides_url }}" target="_blank" rel="noopener">Slides</a>
-          {% endif %}
-          {% if webinar.materials_url and webinar.materials_url != "" %}
-            <a class="google-button outline" href="{{ webinar.materials_url }}" target="_blank" rel="noopener">{{ webinar.materials_label | default: "Materials" }}</a>
-          {% endif %}
-          {% if webinar.materials %}
-            {% for material in webinar.materials %}
-              <a class="google-button outline" href="{{ material.url }}" target="_blank" rel="noopener">{{ material.title | default: "Materials" }}</a>
-            {% endfor %}
-          {% endif %}
+          {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
         </div>
       </div>
     </article>
