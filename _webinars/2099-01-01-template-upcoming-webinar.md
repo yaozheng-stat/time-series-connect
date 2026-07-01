@@ -14,7 +14,9 @@ Use this file as a template for a future webinar. Duplicate it, rename it using 
 
 ## Abstract
 
+<!-- archive-abstract-start -->
 Add the webinar abstract here.
+<!-- archive-abstract-end -->
 
 ## Speaker Bio
 
