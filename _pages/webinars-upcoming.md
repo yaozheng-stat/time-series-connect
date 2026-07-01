@@ -24,7 +24,7 @@ permalink: /webinars/upcoming/
 {% endfor %}
 {% if count == 0 %}
   <div class="upcoming-empty-state">
-    <p>No upcoming webinars are currently listed. Add a future-dated Markdown file to <code>_webinars/</code> and it will appear here automatically.</p>
+    <p>We'll be back with webinars in Fall 2026.</p>
   </div>
 {% endif %}
 </div>
