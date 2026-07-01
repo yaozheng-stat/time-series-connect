@@ -3,30 +3,30 @@ layout: single
 title: About Us
 permalink: /about-us/
 ---
-## Contact
 
-If you want to get in touch, have feedback or suggestions, want to propose a speaker or volunteer, please email [timeseriesconnect@gmail.com](mailto:timeseriesconnect@gmail.com).
+Time Series Connect is an open community for learning and discussing time series research. The series brings together students, researchers, and practitioners through seminars and educational resources. We welcome participation and collaboration from the broader time series community.
 
-## Organizing Committee @ UConn
+## Current Organizing Committee
 
-### Core Faculty Members
+### Faculty
 
 - **Yao Zheng**, Associate Professor, Department of Statistics
 - **Dongjin Song**, Associate Professor, School of Computing
 - **Jungbin Hwang**, Associate Professor, Department of Economics
 
-### Advisory Faculty Members
+### Student Organizers
+
+- **Abhinav Chandrasekhar**
+- **Matthew Venzie**
+- **Isabelle Perez**
+- **Banani Bera**
+
+### Faculty Advisors
 
 - **Nalini Ravishanker**, Professor, Department of Statistics
 - **Jinbo Bi**, Professor, School of Computing
 - **Chihwa Kao**, Professor, Department of Economics
 
-### Undergraduate Student Members
+## Get Involved
 
-- Abhinav Chandrasekhar
-- Matthew Venzie
-
-### Graduate Student Members
-
-- Isabelle Perez
-- Banani Bera
+We welcome collaborations, speaker suggestions, and student organizers interested in helping grow the Time Series Connect community. 
