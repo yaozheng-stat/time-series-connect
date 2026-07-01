@@ -35,6 +35,10 @@ title: Home
         <span>Education Blog</span>
         <small>Read educational posts and student contributions.</small>
       </a>
+      <a class="home-link-card" href="{{ '/news-opportunities/' | relative_url }}">
+        <span>News &amp; Opportunities</span>
+        <small>Find announcements, calls, and opportunities.</small>
+      </a>
     </div>
   </div>
 </section>
