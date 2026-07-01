@@ -21,6 +21,9 @@ collections:
   webinars:
     output: true
     permalink: /webinars/:title/
+  education:
+    output: true
+    permalink: /education-blog/:title/
 
 defaults:
   - scope:
@@ -28,6 +31,12 @@ defaults:
       type: "webinars"
     values:
       layout: webinar
+  - scope:
+      path: ""
+      type: "education"
+    values:
+      layout: education_post
+      math: true
   - scope:
       path: ""
       type: "pages"

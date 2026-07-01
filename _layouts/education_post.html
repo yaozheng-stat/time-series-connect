@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<section class="education-hero">
+  <div class="wrap education-hero__inner">
+    <p class="eyebrow">Education Blog</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="education-hero__summary">{{ page.summary }}</p>{% endif %}
+    <div class="education-meta">
+      {% if page.author %}<span>By {{ page.author }}</span>{% endif %}
+      {% if page.date %}<span>{{ page.date | date: "%B %-d, %Y" }}</span>{% endif %}
+      {% if page.reading_time %}<span>{{ page.reading_time }}</span>{% endif %}
+    </div>
+    {% if page.topics %}
+      <div class="education-topic-list" aria-label="Topics">
+        {% for topic in page.topics %}<span>{{ topic }}</span>{% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="page-body plain-page education-post-page">
+  <div class="wrap education-shell">
+    <aside class="education-toc" aria-label="Article contents">
+      <strong>On this page</strong>
+      <a href="#introduction">Introduction</a>
+      <a href="#locally-stationary-basis-processes">LSB processes</a>
+      <a href="#enso-application">ENSO example</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#references">References</a>
+    </aside>
+    <article class="content-card education-post">
+      {{ content }}
+
+      <footer class="education-post-footer">
+        <a href="{{ '/education-blog/' | relative_url }}">&larr; Back to Education Blog</a>
+      </footer>
+    </article>
+  </div>
+</section>
