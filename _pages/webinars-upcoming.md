@@ -3,11 +3,6 @@ layout: single
 title: Upcoming Webinars
 permalink: /webinars/upcoming/
 ---
-<section class="upcoming-intro">
-  <p class="eyebrow">Upcoming events</p>
-  <h2>Join the next Time Series Connect sessions.</h2>
-  <p>We host academic talks, panels, and interactive sessions that connect ideas from research, industry, government, and other data-rich fields. Each event is online and open to participants from anywhere in the world.</p>
-</section>
 
 <section class="format-note upcoming-format">
   <h2>Format</h2>
