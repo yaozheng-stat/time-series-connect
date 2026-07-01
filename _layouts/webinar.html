@@ -7,22 +7,13 @@ layout: default
       <p class="label">Date</p>
       <p><strong>{{ page.date | date: "%B %-d, %Y" }}</strong></p>
       {% if page.time and page.time != "" %}<p class="label">Time</p><p>{{ page.time }}</p>{% endif %}
-      {% if page.registration_url and page.registration_url != "" %}<a class="button ghost" href="{{ page.registration_url }}" target="_blank" rel="noopener">Register / Event Link</a>{% endif %}
-      {% if page.speaker_url and page.speaker_url != "" %}<a class="button ghost" href="{{ page.speaker_url }}" target="_blank" rel="noopener">Speaker Website</a>{% endif %}
-      {% if page.slides_url and page.slides_url != "" %}<a class="button ghost" href="{{ page.slides_url }}" target="_blank" rel="noopener">Slides</a>{% endif %}
-      {% if page.youtube_url and page.youtube_url != "" %}<a class="button ghost" href="{{ page.youtube_url }}" target="_blank" rel="noopener">Recording</a>{% endif %}
-      {% if page.materials_url and page.materials_url != "" %}<a class="button ghost" href="{{ page.materials_url }}" target="_blank" rel="noopener">{{ page.materials_label | default: "Materials" }}</a>{% endif %}
-      {% if page.materials %}
-        {% for material in page.materials %}
-          <a class="button ghost" href="{{ material.url }}" target="_blank" rel="noopener">{{ material.title | default: "Materials" }}</a>
-        {% endfor %}
-      {% endif %}
+      {% include webinar_buttons.html webinar=page button_class="button ghost" hide_event_details=true %}
     </aside>
     <article class="content-card">
       <header class="plain-page-title">
         <p class="eyebrow">Webinar</p>
         <h1>{{ page.title }}</h1>
-        {% if page.speaker %}<p class="muted">{{ page.speaker }}</p>{% endif %}
+        {% include webinar_speaker.html webinar=page class="muted" %}
       </header>
       {{ content }}
     </article>

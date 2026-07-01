@@ -1,0 +1,29 @@
+{% assign webinar = include.webinar %}
+{% assign button_class = include.button_class | default: 'google-button outline' %}
+{% assign primary_button_class = include.primary_button_class | default: button_class %}
+{% assign details_label = include.details_label | default: 'Event details' %}
+{% assign registration_label = include.registration_label | default: 'Register / Event Link' %}
+
+{% unless include.hide_event_details %}
+  <a class="{{ primary_button_class }}" href="{{ webinar.url | relative_url }}">{{ details_label }}</a>
+{% endunless %}
+{% if webinar.registration_url and webinar.registration_url != "" %}
+  <a class="{{ button_class }}" href="{{ webinar.registration_url }}" target="_blank" rel="noopener">{{ registration_label }}</a>
+{% endif %}
+{% if webinar.speaker_url and webinar.speaker_url != "" %}
+  <a class="{{ button_class }}" href="{{ webinar.speaker_url }}" target="_blank" rel="noopener">Speaker Website</a>
+{% endif %}
+{% if webinar.youtube_url and webinar.youtube_url != "" %}
+  <a class="{{ button_class }}" href="{{ webinar.youtube_url }}" target="_blank" rel="noopener">Recording</a>
+{% endif %}
+{% if webinar.slides_url and webinar.slides_url != "" %}
+  <a class="{{ button_class }}" href="{{ webinar.slides_url }}" target="_blank" rel="noopener">Slides</a>
+{% endif %}
+{% if webinar.materials_url and webinar.materials_url != "" %}
+  <a class="{{ button_class }}" href="{{ webinar.materials_url }}" target="_blank" rel="noopener">{{ webinar.materials_label | default: "Materials" }}</a>
+{% endif %}
+{% if webinar.materials %}
+  {% for material in webinar.materials %}
+    <a class="{{ button_class }}" href="{{ material.url }}" target="_blank" rel="noopener">{{ material.title | default: "Materials" }}</a>
+  {% endfor %}
+{% endif %}

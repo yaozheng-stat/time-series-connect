@@ -14,6 +14,7 @@ permalink: /webinars/archive/
   {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
   {% if webinar_date < today %}
     {% assign count = count | plus: 1 %}
+    {% include webinar_card.html webinar=webinar mode="archive" abstract_limit=archive_abstract_limit %}
     {% assign display_title = webinar.title %}
     {% if webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
       {% assign display_title = webinar.speaker %}
@@ -43,25 +44,9 @@ permalink: /webinars/archive/
         {% else %}
           <p>{{ archive_summary }}</p>
         {% endif %}
+        {% include archive_abstract.html webinar=webinar limit=archive_abstract_limit %}
         <div class="archive-event-card__actions">
-          <a class="google-button" href="{{ webinar.url | relative_url }}">Event details</a>
-          {% if webinar.speaker_url and webinar.speaker_url != "" %}
-            <a class="google-button outline" href="{{ webinar.speaker_url }}" target="_blank" rel="noopener">Speaker Website</a>
-          {% endif %}
-          {% if webinar.youtube_url and webinar.youtube_url != "" %}
-            <a class="google-button outline" href="{{ webinar.youtube_url }}" target="_blank" rel="noopener">Recording</a>
-          {% endif %}
-          {% if webinar.slides_url and webinar.slides_url != "" %}
-            <a class="google-button outline" href="{{ webinar.slides_url }}" target="_blank" rel="noopener">Slides</a>
-          {% endif %}
-          {% if webinar.materials_url and webinar.materials_url != "" %}
-            <a class="google-button outline" href="{{ webinar.materials_url }}" target="_blank" rel="noopener">{{ webinar.materials_label | default: "Materials" }}</a>
-          {% endif %}
-          {% if webinar.materials %}
-            {% for material in webinar.materials %}
-              <a class="google-button outline" href="{{ material.url }}" target="_blank" rel="noopener">{{ material.title | default: "Materials" }}</a>
-            {% endfor %}
-          {% endif %}
+          {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
         </div>
       </div>
     </article>

@@ -16,7 +16,9 @@ materials:
 ---
 ## Abstract
 
+<!-- archive-abstract-start -->
 Aggregate U.S. labor market dynamics are well approximated by a dual labor market supplemented with a third, predominantly home-production, segment. We uncover this structure by estimating a Hidden Markov Model on labor market transitions for 1980-2021. Workers in the primary sector, roughly 55% of the population, are almost always employed and rarely experience unemployment. The secondary sector, 14% of the population, absorbs the bulk of seasonal and business cycle fluctuations. Those in the tertiary segment only infrequently participate in the labor market. Jobs in the primary sector offer more job security, pay higher wages, and offer higher returns to education and experience, consistent with the conjectures of the conventional Dual Labor Market (DLM) hypothesis. However, the individual-level data suggest limited mobility between sectors rather than perfect segmentation. We show this by estimating a generalized DLM model with mobility between three segments which yields that our aggregate results are robust to this extension, despite different individual-level dynamics.
+<!-- archive-abstract-end -->
 
 ## Speaker Bio
 

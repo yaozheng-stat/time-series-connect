@@ -15,9 +15,10 @@ materials:
 ---
 ## Abstract
 
+<!-- archive-abstract-start -->
 Methods of estimation and forecasting for stationary models are well known in classical time series analysis. However, stationarity is an idealization which, in practice, can at best hold as an approximation, but for many time series may be an unrealistic assumption. We define a class of locally stationary processes which can lead to more accurate uncertainty quantiﬁcation over making an invalid assumption of stationarity. This class of processes assumes the model parameters to be time-varying and parameterizes them in terms of a transformation of basis functions that ensures that the processes are locally stationary. We develop methods and theory for parameter estimation in this class of models, and propose a test that allow us to examine certain departures from stationarity. We assess our methods using simulation studies and apply these techniques to the analysis of an electroencephalogram time series. This is joint research with Shreyan Ganguly.
+<!-- archive-abstract-end -->
 
 ## Speaker Bio
 
 Peter F. Craigmile is a Professor in the Department of Mathematics and Statistics at Hunter College, CUNY. His research interests include time series and longitudinal analysis, spatial statistics, and spatio-temporal modeling. He is currently interested in developing statistical methodologies for the statistical inference and theory surrounding stationary and nonstationary non-Gaussian spatial and temporal processes. He works on building scientifically relevant hierarchical statistical models, applied to areas such as climate science, environmental health, psychology, and public health.
-

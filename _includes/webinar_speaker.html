@@ -1,0 +1,6 @@
+{% assign speaker = include.webinar.speaker %}
+{% assign affiliation = include.webinar.affiliation %}
+{% assign speaker_class = include.class | default: 'webinar-speaker' %}
+{% if speaker and speaker != "" %}
+  <p class="{{ speaker_class }}"><strong>{{ speaker }}</strong>{% if affiliation and affiliation != "" %}, {{ affiliation }}{% endif %}</p>
+{% endif %}
