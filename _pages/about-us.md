@@ -10,22 +10,22 @@ Time Series Connect is an open community for learning and discussing time series
 
 ### Faculty
 
-- **Yao Zheng**, Associate Professor, Department of Statistics; ASA BES Liaison
-- **Dongjin Song**, Associate Professor, School of Computing
-- **Jungbin Hwang**, Associate Professor, Department of Economics
+- Yao Zheng, Associate Professor, Department of Statistics; ASA BES Liaison
+- Dongjin Song, Associate Professor, School of Computing
+- Jungbin Hwang, Associate Professor, Department of Economics
 
 ### Student Organizers
 
-- **Abhinav Chandrasekhar**
-- **Matthew Venzie**
-- **Isabelle Perez**
-- **Banani Bera**
+- Abhinav Chandrasekhar
+- Matthew Venzie
+- Isabelle Perez
+- Banani Bera
 
 ### Faculty Advisors
 
-- **Nalini Ravishanker**, Professor, Department of Statistics
-- **Jinbo Bi**, Professor, School of Computing
-- **Chihwa Kao**, Professor, Department of Economics
+- Nalini Ravishanker, Professor, Department of Statistics
+- Jinbo Bi, Professor, School of Computing
+- Chihwa Kao, Professor, Department of Economics
 
 ## Get Involved
 
