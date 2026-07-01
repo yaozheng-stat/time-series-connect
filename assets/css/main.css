@@ -151,7 +151,7 @@ p{margin:0 0 12pt}
 .plain-page{padding-top:38px}
 .plain-page-title{margin:0 0 28px;border-bottom:1px solid var(--line);padding-bottom:18px;text-align:center}
 .plain-page-title .eyebrow{text-align:center;margin-bottom:10px}
-.plain-page-title h1{font-family:Comfortaa,Arial,sans-serif;font-weight:700;color:var(--gold);font-size:clamp(2.2rem,4.6vw,3.9rem);text-align:center;margin:0}
+.plain-page-title h1{font-family:Comfortaa,Arial,sans-serif;font-weight:700;color:var(--gold);font-size:clamp(1.8rem, 3.8vw, 3rem);text-align:center;margin:0}
 .content-card{max-width:930px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:34px 38px}
 .content-card p,.content-card li{color:#000;font-size:1rem;line-height:1.62}
 .content-card strong{font-weight:700;color:#000}
