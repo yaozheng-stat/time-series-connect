@@ -1,0 +1,14 @@
+{% assign archive_abstract_limit = include.limit | default: 220 %}
+{% assign abstract_parts = include.webinar.content | split: '<!-- archive-abstract-start -->' %}
+{% assign abstract_section = '' %}
+{% if abstract_parts.size > 1 %}
+  {% assign abstract_section = abstract_parts[1] | split: '<!-- archive-abstract-end -->' | first %}
+{% else %}
+  {% assign abstract_section = include.webinar.excerpt %}
+{% endif %}
+{% assign archive_summary = abstract_section | strip_html | normalize_whitespace %}
+{% if archive_summary.size > archive_abstract_limit %}
+  <p>{{ archive_summary | truncate: archive_abstract_limit, "..." }}</p>
+{% else %}
+  <p>{{ archive_summary }}</p>
+{% endif %}
