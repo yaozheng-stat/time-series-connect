@@ -12,6 +12,7 @@ permalink: /webinars/upcoming/
 
 {% assign today = site.time | date: '%Y-%m-%d' %}
 {% assign webinars = site.webinars | sort: 'date' %}
+{% assign upcoming_abstract_limit = 220 %}
 <div class="upcoming-event-list">
 {% assign count = 0 %}
 {% for webinar in webinars %}
@@ -27,16 +28,12 @@ permalink: /webinars/upcoming/
       <div class="upcoming-event-card__body">
         <div class="upcoming-event-card__meta">
           {% if webinar.time %}<span>{{ webinar.time }}</span>{% endif %}
-          {% if webinar.affiliation %}<span>{{ webinar.affiliation }}</span>{% endif %}
         </div>
         <h2><a href="{{ webinar.url | relative_url }}">{{ webinar.title }}</a></h2>
-        {% if webinar.speaker %}<p class="upcoming-event-card__speaker"><strong>{{ webinar.speaker }}</strong></p>{% endif %}
-        <p>{{ webinar.excerpt | strip_html | truncate: 220 }}</p>
+        {% include webinar_speaker.html webinar=webinar class="upcoming-event-card__speaker" %}
+        {% include archive_abstract.html webinar=webinar limit=upcoming_abstract_limit %}
         <div class="upcoming-event-card__actions">
-          <a class="google-button" href="{{ webinar.url | relative_url }}">Event details</a>
-          {% if webinar.registration_url %}
-            <a class="google-button outline" href="{{ webinar.registration_url }}" target="_blank" rel="noopener">Sign up</a>
-          {% endif %}
+          {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
         </div>
       </div>
     </article>
