@@ -20,3 +20,23 @@ This is a GitHub Pages-ready Jekyll site for Time Series Connect.
 ## Editing webinars
 
 Duplicate an existing file in `_webinars/`, update the front matter, and add the abstract/materials in Markdown.
+
+## Education Blog workflow
+
+Education posts now live in the `_education/` collection. To add a new post, create a Markdown or HTML file in `_education/` with front matter such as:
+
+```yaml
+---
+title: "Post title"
+date: 2026-07-01
+author: "Author name"
+summary: "One-sentence summary."
+topics:
+  - Topic one
+  - Topic two
+math: true
+reading_time: "10 min read"
+---
+```
+
+The `/education-blog/` page automatically lists all education posts by date. Figures for education posts should be stored under `assets/images/education/<post-slug>/`; downloadable source files can be stored under `assets/downloads/education/<post-slug>/`.

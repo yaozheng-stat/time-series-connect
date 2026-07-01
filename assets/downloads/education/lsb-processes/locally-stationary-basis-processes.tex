@@ -1,0 +1,469 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage[margin=1in]{geometry}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Webinar Article}
+\author{AC }
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Introduction}
+
+\noindent{After removing trends and seasonal patterns, many time series models rely on the pivotal assumption of stationary, that the statistical behavior of the data does not change over time. There is an extensive range of statistical methods available for model selection, estimation, and forecasting of stationary time series, but the assumption of stationary can be unlikely, leading to compromised inference of the stochastic processes of interest.}
+
+\vspace{0.25cm}
+
+\noindent{Applications that naturally lead to nonstationary time series modeling include acoustics, biomedical science, climate science, finance, and oceanography.}
+
+\vspace{0.25cm}
+
+\noindent{Nonstationary models called locally stationary (LS) processes have gained popularity due to their ability to model evolving time series dependence while allowing for efficient statistical estimation. In the article, the authors concentrate on a subclass of LS processes called locally stationary basis (LSB) processes, defined by a transformation of the basis functions that are able to capture smooth changes in the time-varying time series parameters.Using transformations of basis functions ensures that our models are locally stationary, and as appropriate, causal, invertible, or identifiable.}
+
+
+\section{Locally Stationary Basis Processes}
+
+\noindent{Let's first start with a simple and intuitive example of a LSB process. We can measure the daily average temperature measured over a year in a city, which gives us non-stationary data. After accounting for changes in temperature due to different seasons, its variability, and mean change over time.}
+
+\vspace{0.25cm}
+
+\noindent{However, if we focus on a short time window, such as a week in July, the data behaves approximately like a stationary process. The key idea of local stationary is that while the overall process changes over time, it does so smoothly, so that within small intervals it resembles a stationary model.}
+
+\subsection{Univariate Locally Stationary Processes}
+
+Before we can understand LSB processes, we need to understand the broader class of locally stationary (LS) processes introduced by Dahlhaus (1997).
+
+\vspace{0.25cm}
+
+\noindent{We have a time series ${X_{t,T} : t = 1, ..., T}$ where T is the total length of the series. Define $u = \frac{t}{T}$, which rescales time to the interval [0, 1]. When t = 1, u = 1/T $\approx$ 0 (beginning) and when t = T, u = T/T = 1 (end). This rescaling allows us to study the process as T $\to \infty$ while keeping track of where we are proportionally in the series.}
+
+\vspace{0.25cm}
+
+\noindent{We can mathematically represent the series as}
+
+\begin{center}
+    $X_{t,T} = \mu(\frac{t}{T})+\int_{-\pi}^{\pi} \exp(i \lambda t) A_{t,T}^0(\lambda) dZ(\lambda)$
+\end{center}
+
+\noindent{Where $\mu(\frac{t}{T})$ is the trend function that depends on rescaled time and allows the mean to vary smoothly over time, $A^0$ is the transfer function which depends on both frequency $\lambda$ and rescaled time and controls how much each frequency contributes to the process at each time.}
+
+\vspace{0.25cm}
+
+\noindent{The condition:}
+
+\begin{center}
+    $\text{sup}_{t,\lambda} | A_0(\frac{t}{T}, \lambda) - A(\frac{t}{T}, \lambda)| \leq KT^{-1}$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{the discrete-time transfer function $A_0$ is close to a smooth function A. As T increases, this approximation gets better, the resulting smoothness is what makes the process "locally stationary".}
+
+\vspace{0.25cm}
+
+\noindent{Finally, $dZ(\lambda)$ is a stochastic process with special properties}
+
+\subsection{Locally Stationary Basis Processes}
+
+\noindent{Now that we have a understanding of Univariate LS processes we can explore the idea of Locally Stationary Basis (LSB) processes.}
+
+\vspace{0.25cm}
+
+\noindent{An LSB process is an LS process where the time-varying transfer function is written as}
+
+\begin{center}
+    $A(\mu, \lambda) =m(\xi_1(u),..., \xi_J(u);\lambda)$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{This means that the transfer function depends on a few time varying parameters that evolve smoothly over time. Each parameter curve can be defined via generalized linear functions of the basis vectors.}
+
+\begin{center}
+    $g_j(\xi_j(u)) = w'_j(u) \beta_j$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{Where basis functions, $w_j(u)$ are smooth functions of rescaled time such as polynomials, wavelets, or splines, $\beta_j$ are the coefficients to estimate, and  $g_j$ is the link function that enforces constraints.}
+
+\vspace{0.25cm}
+
+\noindent{This construction of the transfer function ensures flexibility since different basis functions capture different patterns. Additionally link functions ensure parameters stay in valid ranges, which guarantees local stationary.}
+
+\subsubsection{Statistical Properties}
+
+\noindent{We've defined and understood the ideas behind LSB process, which results in important statistical properties. }
+
+\vspace{0.25cm}
+
+\noindent{Since LSB processes are a special case of LS processes, and $E(dZ(\lambda))$ = 0, we have,}
+
+\begin{center}
+    $E(X_{t,T}) = \mu(\frac{t}{T})$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{The mean is controlled by the trend function. The time-varying spectral density function (SDF) is defined as,}
+
+\begin{center}
+    $f(u, \lambda; \beta) = |A(u, \lambda; \beta)|^2 = |m(\xi_1(u), ..., \xi_J(u); \lambda)|^2$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{This is the squared magnitude of the transfer function. At rescaled time u and frequency $\lambda$, it tells us how much variance is contributed by that frequency. It changes over time and across frequencies. We then define the time-varying covariance function for our LSB process, c(u, h; $\beta$) at rescaled time u and lag h by,}
+
+\begin{center}
+    $c(u, h; \beta) = \int_{-\pi}^{\pi} f(u, h; \beta) \exp(i h \lambda) d\lambda$
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent{At rescaled time u, it gives the covariance between observations separated by lag h. The paper shows that,}
+
+\begin{center}
+    $cov(X_{[uT-h/2],T}, X_{[uT+h/2],T}) = c^0(u, h; \beta) + O(T^{-1})$
+\end{center}
+
+\noindent{This means that the time-varying covariance function c(u, h; $\beta$) approximates the actual covariances, with error decreasing as $O(T^{-1})$.}
+
+
+\section{Application to ENSO data}
+
+El Nino and the Southern Oscillation (ENSO) is a periodic fluctuation in sea surface temperature and the air pressure of the overlying atmosphere that occurs roughly every 2-7 years. Using ENSO data, we will look at how to fit and model the El Nino effect using a LSB model. 
+
+\vspace{0.25cm}
+
+\noindent{The functions, data, and full script can be found in the following \href{https://github.com/chanabhi/ENSO_LSB}{Github repository}}
+
+\vspace{0.25cm}
+
+\noindent{We start by loading the required libraries and functions.}
+
+\begin{lstlisting}
+library(astsa)
+library(spectral)
+library(fields)
+library(readxl)
+library(mvnfast)
+
+source("functions/basis_functions.R")
+source("functions/LSB_ARp.R")
+source("functions/LSB_AR_SDF.R")
+
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{Next we load the ENSO dataset and plot it.}
+
+\begin{lstlisting}
+raw <- read_excel("data/ENSO.xlsx")
+
+enso <- as.vector(t(as.matrix(raw[, -1])))
+enso <- enso[!is.na(enso)]
+
+T.       <- length(enso)
+ts_years <- seq(1951, by = 1/12, length.out = T.)
+fs       <- seq(0, 0.5, length = 128)
+
+plot(ts_years, enso, type = "l",
+     xlab = "Year", ylab = "ENSO index",
+     main = "ENSO monthly index")
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{images/ENSO_Plot_Webinar2.png}
+\caption{Raw ENSO series}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent{We fit LSB-AR(p) models with different orders (p = 2 to 6) and number of basis functions (b = 2 to 6) to capture the smooth evolution of parameters over time. Basis functions allow us to represent smooth curves using a small number of parameters. Instead of estimating a different AR coefficient at every time point, we express the time varying coefficients as smooth functions built from basis functions. In this case, we use natural cubic splines.}
+
+\begin{lstlisting}
+param_grid <- expand.grid(ar.order = 2:6, ar.basis.order = 2:6)
+
+models <- mapply(
+  function(p, b) LSB.ARp.model.sel(enso, p, b, X.method = "spline"),
+  param_grid$ar.order,
+  param_grid$ar.basis.order,
+  SIMPLIFY = FALSE)
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{The Nonstationary Information Criterion (NIC) and the Bayesian Information Criterion (BIC) are extracted from every fitted model. The model minimizing each criterion is identified and its selected AR order and basis-function count are printed. }
+
+\begin{lstlisting}
+best_nic <- models[[which.min(sapply(models, `[[`, "NIC"))]]
+best_bic <- models[[which.min(sapply(models, `[[`, "BIC"))]]
+
+cat("NIC-selected model: AR order =", best_nic$ar.order,
+    " | basis order =", best_nic$ar.basis.order, "\n")
+cat("BIC-selected model: AR order =", best_bic$ar.order,
+    " | basis order =", best_bic$ar.basis.order, "\n")
+
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{We use NIC to select a LSB-AR(3) model with basis order 2 for the AR parameters. We next select the number of basis functions for the time varying variance.}
+
+\begin{lstlisting}
+b_values   <- 2:6
+var_models <- lapply(b_values, function(s)
+  LSB.ARp.model.sel(enso, best_nic$ar.order, best_nic$ar.basis.order,
+                    s = s, X.method = "spline"))
+
+best_s <- b_values[which.min(sapply(var_models, `[[`, "NIC"))]
+cat("Variance basis order:", best_s, "\n")
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{As a result, 2 basis functions are selected for the variance curve. Now we fit the LSB-AR(3) model with 2 basis functions for AR parameters and 2 for variance. The model has three key components, the time varying AR coefficients
+capture how the dependence structure changes, the time varying variance captures changes in signal amplitude, and the basis function coefficients are the actual parameters we estimate. We can now fit the model.}
+
+\begin{lstlisting}
+p <- best_nic$ar.order
+b <- best_nic$ar.basis.order
+s <- best_s
+
+build_basis <- function(orders) {
+  lapply(orders, function(d)
+    build.X(n = T., X.deg = d, X.method = "spline"))
+}
+
+fit_lsb <- function(basis_orders, ...) {
+  X <- build_basis(basis_orders)
+  fit <- optim(
+    rep(0.01, sum(basis_orders + 1)),
+    LSB.ARp.lik,
+    y = enso, X = X,
+    method = "L-BFGS-B", ...
+  )
+  list(fit = fit, X = X)
+}
+
+tv  <- fit_lsb(c(rep(b, p), s), hessian = TRUE)  # time-varying
+sta <- fit_lsb(rep(0, p + 1))                    # stationary
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{Now that the model is fitted we can compute the time varying spectral density function (SDF)}
+
+\begin{lstlisting}
+the.beta   <- theta.to.beta.list(tv$X, tv$fit$par, p)
+the.phi    <- beta.list.to.phi.list(tv$X, the.beta, p)
+the.sigma2 <- eta.to.sigma2(calc.eta(tv$X[[p + 1]], the.beta[[p + 1]]))
+
+ar.sdfs <- lapply(seq_len(T. - p), function(k)
+  dB(ar.sdf(freqs  = fs,
+            phi    = as.vector(the.phi[[p]][1:p, k]),
+            sigma2 = the.sigma2[k])))
+
+sp.matrix <- t(sapply(ar.sdfs, identity))
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{The spectral matrix is displayed as a heat map. Frequency is converted from cycles per month to cycles per year (multiply by 12) so that physically meaningful periods, roughly 2 to 7 years for the ENSO band and 1 year for the annual cycle, fall within the plotted range.}
+
+\begin{lstlisting}
+image.plot(
+  ts_years[(p + 1):T.],
+  fs * 12,
+  sp.matrix,
+  xlab = "Year",
+  ylab = "Frequency (cycles/year)",
+  main = paste0("Time-varying SDF: LSB-AR(", p, ")"),
+  ylim = c(0, 3)
+)
+abline(h   = c(1/7, 1/2, 1), lwd = 2, lty = 2)
+text(x      = 1960,
+     y      = c(0.25, 0.75, 1.1),
+     labels = c("ENSO low", "ENSO high", "Annual"),
+     cex    = 0.75)
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{images/ENSO_SDF_2.png}
+\caption{Time Varying SDF of ENSO}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent{We can also compute and plot the standard deviation of the Time Varying SDF.}
+
+\begin{lstlisting}
+cov.mat <- solve(tv$fit$hessian)
+
+par.sim <- mvnfast::rmvn(
+  1000,
+  mu    = tv$fit$par,
+  sigma = cov.mat
+)
+
+sdfs <- lapply(1:nrow(par.sim), function(i)
+  LSB.ARp.sdf(par = par.sim[i, ], X = tv$X, fs = fs))
+
+spec.sd <- array(
+  sapply(1:(nrow(sdfs[[1]]) * ncol(sdfs[[1]])), function(x)
+    sd(unlist(lapply(sdfs, "[[", x)))),
+  dim(sdfs[[1]])
+)
+
+image.plot(
+  ts_years[(p + 1):T.],
+  fs * 12,
+  spec.sd,
+  xlab = "Year",
+  ylab = "Frequency (cycles/year)",
+  main = paste0("SD of Time-varying SDF: LSB-AR(", p, ")"),
+  ylim = c(0, 3)
+)
+abline(h   = c(1/7, 1/2, 1), lwd = 2, lty = 2)
+text(x      = 1960,
+     y      = c(0.25, 0.75, 1.1),
+     labels = c("ENSO low", "ENSO high", "Annual"),
+     cex    = 0.75)
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{images/ENSO_SD_SDF_2.png}
+\caption{Standard Deviation of Time Varying SDF of ENSO}
+\end{figure}
+
+
+\vspace{0.25cm}
+
+\noindent{As a formal check, we test whether the nonstationary LSB model provides a significantly better fit than a stationary AR model of the same order.}
+
+\begin{lstlisting}
+test_stat <- -2 * (tv$fit$value - sta$fit$value)
+df        <- sum(c(rep(b, p), s)) - (p + 1)
+p_value   <- pchisq(test_stat, df = df, lower.tail = FALSE)
+
+cat(sprintf("Stationarity test: statistic = %.2f, df = %d, p-value = %.4f\n",
+            test_stat, df, p_value))
+\end{lstlisting}
+
+\vspace{0.25cm}
+
+\noindent{The stationary test yields a p-value of 0.0498. At the 5$\%$ significance level this indicates that the data is non-stationary. Observing the Time Varying SDF we see that the frequency has expanded over time indicating that the ENSO cycle has become more frequent and stronger. Recent research supports this idea, "The most recent 50-60 years, for example, appears to be more energetic, with larger swings up and down, than the previous 50-60 years." \cite{NOAA_ENSO}. Flexible nonstationary models such as LSB processes are useful for modeling changing processes}.
+
+\section{References}
+\begingroup
+\renewcommand{\section}[2]{}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{references}
+\endgroup
+
+
+\section{Glossary}
+\begin{description}
+    \item[Time Series] A sequence of data points indexed in chronological order. For example $\{y_t:t=1,2,\ldots n\}$. \href{https://en.wikipedia.org/wiki/Time_series}{Source}
+    \item[Weakly Stationary Process]A weakly stationary time series, $x_t$, is a finite variance process such that  the mean value function, $\mu_t$, is constant and does not depend on time t, and the autocovariance function, $\gamma$(s,t), depends on s and t only through their difference $|s-t|$. \cite{shumway2025time}
+    \item[Locally Stationary (LS)] A framework for processes that are nonstationary globally but behave approximately like stationary processes within short, local time windows.\cite{dahlhaus1997fitting}
+    \item[Locally Stationary Basis (LSB)] A subclass of LS processes where the time-varying parameters are defined using a small number of smooth basis functions. \cite{ganguly2025modeling}
+    \item[Transfer Function] A mathematical representation ($A_{t,T}^0$) that defines how different frequencies contribute to a stochastic process at a specific point in time. \cite{ganguly2025modeling}
+    \item[Spectral Density Function (SDF)] A function that describes how the variance of a time series is distributed across different frequencies. \href{https://en.wikipedia.org/wiki/Spectral_density}{Source}
+    \item[Basis Functions] A set of elementary functions (such as splines, wavelets, or polynomials) used to represent complex, smooth curves with a finite number of coefficients. \cite{ganguly2025modeling}
+    \item[Link Function] A mathematical function used to map linear predictors to parameter ranges. \href{https://en.wikipedia.org/wiki/Generalized_linear_model}{Source}
+    \item[ENSO] El Niño and the Southern Oscillation (ENSO), is a periodic fluctuation (i.e., every 2–7 years) in sea surface temperature and the air pressure of the overlying atmosphere across the equatorial Pacific Ocean. 
+    \href{https://www.ncei.noaa.gov/access/monitoring/enso/}{Source}
+    \item[El Nino] A warming of the ocean surface, or above-average sea surface temperatures, in the central and eastern tropical Pacific Ocean. \href{https://www.climate.gov/news-features/blogs/enso/what-el-nino-southern-oscillation-enso-nutshell}{Source}
+    \item[La Nina] A cooling of the ocean surface, or below-average sea surface temperatures , in the central and eastern tropical Pacific Ocean. \href{https://www.climate.gov/news-features/blogs/enso/what-el-nino-southern-oscillation-enso-nutshell}{Source}
+\end{description}
+
+- in github add references to figures in article
+- specify decibel usage (
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/ENSO_SDF_2.png}
+    \label{fig:sub1}
+  \end{subfigure}
+  \hfill % Adds horizontal space between the images
+  \begin{subfigure}[b]{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/ENSO_SD_SDF_2.png}
+    \label{fig:sub2}
+  \end{subfigure}
+  \caption{Time-Varying SDF and SD using decibel (dB) transformation}
+  \label{fig:main}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/power_sdf.png}
+    \label{fig:sub1}
+  \end{subfigure}
+  \hfill % Adds horizontal space between the images
+  \begin{subfigure}[b]{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/power_sd_sdf.png}
+    \label{fig:sub2}
+  \end{subfigure}
+  \caption{Time-Varying SDF and SD without decibel (dB) transformation}
+  \label{fig:main}
+\end{figure}
+
+
+
+\end{document}
