@@ -162,10 +162,26 @@ li{margin:.3rem 0}
 .two-column{display:grid;grid-template-columns:290px minmax(0,1fr);gap:30px;align-items:start}
 .two-column .content-card{max-width:none}
 .sidebar-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:26px;align-self:start;position:sticky;top:96px}
+.sidebar-card .button{width:100%;margin-top:12px;text-align:center}
 .label{font-family:Roboto,Arial,sans-serif;font-size:.78rem;text-transform:uppercase;color:#5f6368;font-weight:500;margin:18px 0 4px}
 .webinar-list{display:grid;gap:18px}
 .webinar-item{display:grid;grid-template-columns:170px 1fr;gap:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:22px 24px}
 .webinar-item h2,.webinar-item h3{margin:0 0 8px;text-align:left}
+.archive-intro{max-width:780px;margin:0 auto 28px!important;text-align:center;color:#3c4043!important}
+.archive-event-list{display:grid;gap:24px;max-width:960px;margin:34px auto 0}
+.archive-event-card{display:grid;grid-template-columns:132px minmax(0,1fr);gap:28px;align-items:stretch;padding:28px;background:#fff;border:1px solid rgba(218,220,224,.9);border-radius:20px;box-shadow:0 10px 30px rgba(60,64,67,.08)}
+.archive-event-card:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(60,64,67,.14);transition:.18s ease}
+.archive-event-card__date{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:132px;border-radius:18px;background:linear-gradient(180deg,#fff 0%,#f8fafd 100%);box-shadow:inset 0 0 0 1px #e3e8f2}
+.archive-event-card__month,.archive-event-card__year{color:#5f6368;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.archive-event-card__day{font-family:Comfortaa,Arial,sans-serif;color:var(--gold);font-size:2.65rem;font-weight:700;line-height:1.05;margin:2px 0}
+.archive-event-card__meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.archive-event-card__meta span{display:inline-flex;align-items:center;border-radius:999px;background:#f1f3f4;color:#3c4043;font-size:.9rem;font-weight:700;padding:4px 10px}
+.archive-event-card h2{margin:0 0 10px;text-align:left;font-size:1.55rem;line-height:1.24}
+.archive-event-card__speaker{margin-bottom:8px!important}
+.archive-event-card p{color:#303134}
+.archive-event-card__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.archive-event-card__actions .google-button{padding:8px 16px}
+.archive-empty-state{padding:28px 30px;background:#f8fafd;border:1px solid #eef1f6;border-radius:18px;text-align:center}
 .muted{color:var(--muted)!important}
 .site-footer{background:var(--footer);color:#3c4043;border-top:1px solid var(--line);padding:34px 0}
 .site-footer p{margin:.25rem 0;color:#3c4043}.site-footer a{color:var(--blue)}
@@ -192,12 +208,13 @@ li{margin:.3rem 0}
   .partner-logos{grid-template-columns:1fr;gap:18px}
   .masthead__inner{flex-direction:column;align-items:flex-start;padding:14px 28px;gap:12px}.site-nav a{padding:0 0 8px}
   .google-hero{min-height:300px}.hero-title-block{padding:56px 28px}.google-section{padding:34px 0}.google-section + .google-section{padding-top:30px}
-  .tile-grid,.two-column,.webinar-item,.home-about__grid,.home-link-grid{grid-template-columns:1fr}.sidebar-card{position:static}
+  .tile-grid,.two-column,.webinar-item,.archive-event-card,.home-about__grid,.home-link-grid{grid-template-columns:1fr}.sidebar-card{position:static}
   .home-lede__inner{padding-top:48px;padding-bottom:46px;text-align:left}.home-lede h1,.home-lede__summary{margin-left:0;margin-right:0}.home-lede__actions{justify-content:flex-start}
   .home-event-card{grid-template-columns:1fr}.home-event-card__date{align-items:flex-start;min-height:auto;padding:18px 20px}.home-event-card__day{font-size:2rem}.home-event-card__month,.home-event-card__year{display:inline-block}
+  .archive-event-card__date{align-items:flex-start;min-height:auto;padding:18px 20px}.archive-event-card__day{font-size:2rem}
   .home-about h2{text-align:center}.home-about__grid{text-align:center;gap:20px}
 }
 @media(max-width:560px){
   .hero-title-block h1{font-size:2.85rem}.subtitle{font-size:1.35rem}.site-nav{gap:12px}.site-nav a{font-size:.9rem}.content-card{padding:24px}.wrap{padding:0 20px}
-  .home-lede h1{font-size:2.35rem}.home-lede__summary{font-size:1.04rem}.google-button,.button{width:100%}.event-actions .google-button{width:auto}.home-event-card{padding:18px}.home-link-card{min-height:auto}
+  .home-lede h1{font-size:2.35rem}.home-lede__summary{font-size:1.04rem}.google-button,.button{width:100%}.event-actions .google-button,.archive-event-card__actions .google-button{width:auto}.home-event-card,.archive-event-card{padding:18px}.home-link-card{min-height:auto}
 }
