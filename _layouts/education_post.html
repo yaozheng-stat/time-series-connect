@@ -6,6 +6,20 @@ layout: default
     <p class="eyebrow">Education Blog</p>
     <h1>{{ page.title }}</h1>
     {% if page.summary %}<p class="education-hero__summary">{{ page.summary }}</p>{% endif %}
+    {% if page.webinar_title %}
+      <div class="education-webinar-box">
+        <h3>🎥 Corresponding Webinar</h3>
+        <p>
+          <strong>{{ page.webinar_title }}</strong><br>
+          {% if page.webinar_speaker %}Speaker: {{ page.webinar_speaker }}<br>{% endif %}
+          {% if page.webinar_date %}{{ page.webinar_date | date: "%B %-d, %Y" }}{% endif %}
+        </p>
+
+        {% if page.webinar_url %}
+          <a href="{{ page.webinar_url | relative_url }}">View webinar →</a>
+        {% endif %}
+      </div>
+    {% endif %}
     <div class="education-meta">
       {% if page.author %}<span>By {{ page.author }}</span>{% endif %}
       {% if page.date %}<span>{{ page.date | date: "%B %-d, %Y" }}</span>{% endif %}
@@ -23,11 +37,11 @@ layout: default
   <div class="wrap education-shell">
     <aside class="education-toc" aria-label="Article contents">
       <strong>On this page</strong>
-      <a href="#introduction">Introduction</a>
-      <a href="#locally-stationary-basis-processes">LSB processes</a>
-      <a href="#enso-application">ENSO example</a>
-      <a href="#glossary">Glossary</a>
-      <a href="#references">References</a>
+      {% if page.toc %}
+        {% for item in page.toc %}
+          <a href="{{ item.url }}">{{ item.label }}</a>
+        {% endfor %}
+      {% endif %}
     </aside>
     <article class="content-card education-post">
       {{ content }}
