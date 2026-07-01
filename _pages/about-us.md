@@ -4,13 +4,13 @@ title: About Us
 permalink: /about-us/
 ---
 
-Time Series Connect is an open community for learning and discussing time series research. The series brings together students, researchers, and practitioners through seminars and educational resources. We welcome participation and collaboration from the broader time series community.
+Time Series Connect is an open community for learning and discussing time series research. The series brings together students, researchers, and practitioners through seminars and educational resources. It is hosted by the University of Connecticut and presented in collaboration with the American Statistical Association Business and Economic Statistics Section (ASA BES). We welcome participation and collaboration from the broader time series community.
 
 ## Current Organizing Committee
 
 ### Faculty
 
-- **Yao Zheng**, Associate Professor, Department of Statistics
+- **Yao Zheng**, Associate Professor, Department of Statistics; ASA BES Liaison
 - **Dongjin Song**, Associate Professor, School of Computing
 - **Jungbin Hwang**, Associate Professor, Department of Economics
 
