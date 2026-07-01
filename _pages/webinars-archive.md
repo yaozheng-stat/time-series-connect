@@ -14,6 +14,7 @@ permalink: /webinars/archive/
   {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
   {% if webinar_date < today %}
     {% assign count = count | plus: 1 %}
+    {% include webinar_card.html webinar=webinar mode="archive" abstract_limit=archive_abstract_limit %}
     {% assign display_title = webinar.title %}
     {% if webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
       {% assign display_title = webinar.speaker %}
