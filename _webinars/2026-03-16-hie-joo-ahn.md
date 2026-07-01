@@ -10,7 +10,7 @@ slides_url: ""
 youtube_url: "https://www.youtube.com/watch?v=yEtRCDgbWcc"
 materials_url: ""
 materials:
-  - title: "Manuscript"
+  - title: "Materials"
     url: "https://drive.google.com/file/d/1C5JuPgj7YXiRdcrbpzlgGBuA46mSoizr/view?usp=drive_link"
 
 ---

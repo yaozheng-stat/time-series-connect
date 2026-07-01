@@ -10,7 +10,7 @@ slides_url: ""
 youtube_url: "https://www.youtube.com/watch?v=jWay0jk5lK0"
 materials_url: ""
 materials:
-  - title: "Manuscript"
+  - title: "Materials"
     url: "https://arxiv.org/abs/2106.03533"
 ---
 ## Abstract
