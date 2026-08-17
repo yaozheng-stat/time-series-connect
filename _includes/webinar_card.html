@@ -3,7 +3,6 @@
 {% assign card_class = mode | append: '-event-card' %}
 {% assign speaker_class = card_class | append: '__speaker' %}
 {% assign abstract_limit = include.abstract_limit | default: 220 %}
-{% assign upcoming_image = webinar.upcoming_image %}
 {% assign display_title = webinar.title %}
 {% if mode == 'archive' and webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
   {% assign display_title = webinar.speaker %}
@@ -21,9 +20,9 @@
     </div>
     <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
     {% if display_title != webinar.speaker %}
-      {% if mode == 'upcoming' and upcoming_image and upcoming_image != "" %}
+      {% if webinar.speaker_image and webinar.speaker_image != "" %}
         <div class="webinar-card-speaker">
-          <img src="{{ upcoming_image | relative_url }}" alt="{{ webinar.speaker }}">
+          <img src="{{ webinar.speaker_image | relative_url }}" alt="{{ webinar.speaker }}">
           {% include webinar_speaker.html webinar=webinar class=speaker_class %}
         </div>
       {% else %}
