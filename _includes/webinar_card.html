@@ -20,11 +20,15 @@
     </div>
     <h2><a href="{{ webinar.url | relative_url }}">{{ display_title }}</a></h2>
     {% if display_title != webinar.speaker %}
-      {% if webinar.speaker_image and webinar.speaker_image != "" %}
-        <div class="webinar-card-speaker">
-          <img src="{{ webinar.speaker_image | relative_url }}" alt="{{ webinar.speaker }}">
+      {% if mode == 'upcoming' %}
+        {% if webinar.speaker_image and webinar.speaker_image != "" %}
+          <div class="webinar-card-speaker">
+            <img src="{{ webinar.speaker_image | relative_url }}" alt="{{ webinar.speaker }}">
+            {% include webinar_speaker.html webinar=webinar class=speaker_class %}
+          </div>
+        {% else %}
           {% include webinar_speaker.html webinar=webinar class=speaker_class %}
-        </div>
+        {% endif %}
       {% else %}
         {% include webinar_speaker.html webinar=webinar class=speaker_class %}
       {% endif %}
