@@ -167,6 +167,8 @@ li{margin:.3rem 0}
 .webinar-card-speaker{display:flex;align-items:center;gap:14px;margin:2px 0 12px}
 .webinar-card-speaker img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex:0 0 auto}
 .webinar-card-speaker p{margin:0!important}
+.webinar-speaker-image{max-width:260px;margin:0 auto 28px}
+.webinar-speaker-image img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line);box-shadow:var(--shadow)}
 .webinar-list{display:grid;gap:18px}
 .webinar-item{display:grid;grid-template-columns:170px 1fr;gap:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:22px 24px}
 .webinar-item h2,.webinar-item h3{margin:0 0 8px;text-align:left}
