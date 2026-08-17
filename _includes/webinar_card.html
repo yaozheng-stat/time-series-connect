@@ -3,7 +3,7 @@
 {% assign card_class = mode | append: '-event-card' %}
 {% assign speaker_class = card_class | append: '__speaker' %}
 {% assign abstract_limit = include.abstract_limit | default: 220 %}
-{% assign upcoming_image = webinar.upcoming_image %}
+{% assign upcoming_image = webinar.speaker_image | default: webinar.upcoming_image %}
 {% assign display_title = webinar.title %}
 {% if mode == 'archive' and webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
   {% assign display_title = webinar.speaker %}

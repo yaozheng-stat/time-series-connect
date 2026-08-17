@@ -6,7 +6,7 @@ date: 2026-09-28
 permalink: /webinars/rebecca-killick/
 time: "12:00 PM - 1:30 PM ET"
 speaker_url: "https://www.lancs.ac.uk/~killick/"
-upcoming_image: "/assets/images/speakers/rebecca-killick.jpg"
+speaker_image: "/assets/images/speakers/rebecca-killick.jpg"
 registration_url: "https://events.teams.microsoft.com/event/372324fe-914c-4d6e-9942-770cfbd474d6@17f1a87e-2a25-4eaa-b9df-9d439034b080"
 slides_url: ""
 youtube_url: ""
