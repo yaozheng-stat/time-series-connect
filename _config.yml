@@ -8,6 +8,7 @@ repository: "yaozheng-stat/time-series-connect"
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
+future: true
 
 plugins:
   - jekyll-feed
