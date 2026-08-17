@@ -3,7 +3,7 @@ title: "How should we be performing time series simulation studies?"
 speaker: "Rebecca Killick"
 affiliation: "Associate Director of Research, School of Mathematical and Statistical Sciences, Clemson University"
 date: 2026-09-28
-permalink: /webinars/rebecca-killick-time-series-simulation-studies/
+permalink: /webinars/rebecca-killick/
 time: "12:00 PM - 1:30 PM ET"
 speaker_url: "https://www.lancs.ac.uk/~killick/"
 speaker_image: "/assets/images/speakers/rebecca-killick.jpg"
