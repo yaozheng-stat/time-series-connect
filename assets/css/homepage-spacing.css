@@ -329,6 +329,10 @@ p,
     width:100%;
   }
 
+  .asa-card{
+    padding:0;
+  }
+
   .asa-card img{
     width:100%;
     height:112px;
