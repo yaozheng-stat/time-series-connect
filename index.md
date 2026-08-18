@@ -32,7 +32,7 @@ title: Home
       {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
       {% if webinar_date >= today and webinar.published != false %}
         {% assign upcoming_count = upcoming_count | plus: 1 %}
-        {% include webinar_card.html webinar=webinar mode="upcoming" abstract_limit=home_upcoming_abstract_limit details_label="Event details & resources" %}
+        {% include webinar_card.html webinar=webinar mode="upcoming" abstract_limit=home_upcoming_abstract_limit details_label="Event details & resources" core_actions_only=true %}
       {% endif %}
     {% endfor %}
     </div>
