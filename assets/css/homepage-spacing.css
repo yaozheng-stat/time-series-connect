@@ -85,6 +85,7 @@ p,
 }
 
 .home-upcoming-events .upcoming-event-card__meta,
+.home-upcoming-events .upcoming-event-card__mobile-meta,
 .home-upcoming-events .upcoming-event-card h2,
 .home-upcoming-events .webinar-card-speaker,
 .home-upcoming-events .upcoming-event-card__body > p{
@@ -247,6 +248,12 @@ p,
   }
 }
 
+@media(max-width:780px){
+  .home-upcoming-events .upcoming-event-card{
+    grid-template-columns:1fr;
+  }
+}
+
 @media(max-width:560px){
   .masthead__inner{
     padding-left:10px;
@@ -310,5 +317,20 @@ p,
 @media(max-width:900px){
   .partner-logos{
     grid-template-columns:1fr;
+    justify-items:stretch;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .partner-card,
+  .uconn-card,
+  .asa-card{
+    width:100%;
+  }
+
+  .asa-card img{
+    width:100%;
+    height:112px;
   }
 }

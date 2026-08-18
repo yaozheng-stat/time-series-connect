@@ -172,6 +172,7 @@ li{margin:.3rem 0}
 .archive-event-card__day{font-family:Comfortaa,Arial,sans-serif;color:var(--gold);font-size:2.65rem;font-weight:700;line-height:1.05;margin:2px 0}
 .archive-event-card__meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
 .archive-event-card__meta span{display:inline-flex;align-items:center;border-radius:999px;background:#f1f3f4;color:#3c4043;font-size:.9rem;font-weight:700;padding:4px 10px}
+.archive-event-card__mobile-meta{display:none}
 .archive-event-card h2{margin:0 0 10px;text-align:left;font-size:1.55rem;line-height:1.24}
 .archive-event-card__speaker{margin-bottom:8px!important}
 .archive-event-card p{color:#303134}
@@ -206,7 +207,10 @@ li{margin:.3rem 0}
   .google-hero{min-height:300px}.hero-title-block{padding:56px 28px}.google-section{padding:34px 0}.google-section + .google-section{padding-top:30px}
   .tile-grid,.two-column,.webinar-item,.archive-event-card,.home-about__grid,.home-link-grid{grid-template-columns:1fr}.sidebar-card{position:static}
   .home-lede__inner{padding-top:48px;padding-bottom:46px;text-align:left}.home-lede h1,.home-lede__summary{margin-left:0;margin-right:0}.home-lede__actions{justify-content:flex-start}
-  .archive-event-card__date{align-items:flex-start;min-height:auto;padding:18px 20px}.archive-event-card__day{font-size:2rem}
+  .archive-event-card__date,.archive-event-card__meta{display:none}
+  .archive-event-card__mobile-meta{display:flex;align-items:center;flex-wrap:wrap;gap:4px 0;color:#3c4043;font-size:.92rem;font-weight:700;line-height:1.35;margin-bottom:6px}
+  .archive-event-card__mobile-meta span{display:inline-flex;align-items:center}
+  .archive-event-card__mobile-meta span + span:before{content:"";width:4px;height:4px;margin:0 10px;border-radius:50%;background:#9aa0a6}
   .home-about h2{text-align:center}.home-about__grid{text-align:center;gap:20px}
 }
 @media(max-width:560px){

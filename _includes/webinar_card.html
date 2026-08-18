@@ -24,6 +24,10 @@
     <span class="{{ card_class }}__year">{{ webinar.date | date: "%Y" }}</span>
   </div>
   <div class="{{ card_class }}__body">
+    <div class="{{ card_class }}__mobile-meta">
+      <span>{{ webinar.date | date: "%b %-d, %Y" }}</span>
+      {% if webinar.time and webinar.time != "" and webinar.time != "Time TBD" %}<span>{{ webinar.time }}</span>{% endif %}
+    </div>
     <div class="{{ card_class }}__meta">
       {% if webinar.time and webinar.time != "" and webinar.time != "Time TBD" %}<span>{{ webinar.time }}</span>{% endif %}
     </div>
