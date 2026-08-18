@@ -16,6 +16,53 @@ title: Home
   </div>
 </section>
 
+<section class="google-section alt home-events">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">Upcoming webinars</p>
+      <h2>Upcoming Events</h2>
+    </div>
+
+    {% assign today = site.time | date: '%Y-%m-%d' %}
+    {% assign webinars = site.webinars | sort: 'date' %}
+    {% assign upcoming_count = 0 %}
+    <div class="home-event-list">
+    {% for webinar in webinars %}
+      {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
+      {% if webinar_date >= today and webinar.published != false %}
+        {% assign upcoming_count = upcoming_count | plus: 1 %}
+        <article class="home-event-card">
+          <div class="home-event-card__date" aria-label="{{ webinar.date | date: '%B %-d, %Y' }}">
+            <span class="home-event-card__month">{{ webinar.date | date: "%b" }}</span>
+            <span class="home-event-card__day">{{ webinar.date | date: "%d" }}</span>
+            <span class="home-event-card__year">{{ webinar.date | date: "%Y" }}</span>
+          </div>
+          <div class="home-event-card__content">
+            <div class="home-event-card__meta">
+              <span>{{ webinar.date | date: "%B %-d, %Y" }}</span>
+              {% if webinar.time and webinar.time != "" %}<span>{{ webinar.time }}</span>{% endif %}
+            </div>
+            <h3><a href="{{ webinar.url | relative_url }}">{{ webinar.title }}</a></h3>
+            {% include webinar_speaker.html webinar=webinar class="home-event-card__speaker" %}
+            {% if webinar.registration_url and webinar.registration_url != "" %}
+              <div class="event-actions">
+                <a class="google-button" href="{{ webinar.registration_url }}" target="_blank" rel="noopener">Add to Calendar / Sign up</a>
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    {% if upcoming_count == 0 %}
+      <div class="home-empty-state">
+        <p>No upcoming webinars are listed yet.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
 <section class="google-section home-quick-links">
   <div class="wrap">
     <div class="section-heading">
