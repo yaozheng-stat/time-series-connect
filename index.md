@@ -38,18 +38,13 @@ title: Home
             <span class="home-event-card__year">{{ webinar.date | date: "%Y" }}</span>
           </div>
           <div class="home-event-card__content">
-            <div class="home-event-card__meta">
-              <span>{{ webinar.date | date: "%B %-d, %Y" }}</span>
-              {% if webinar.time and webinar.time != "" %}<span>{{ webinar.time }}</span>{% endif %}
-            </div>
+            {% if webinar.time and webinar.time != "" %}<p class="home-event-card__time">{{ webinar.time }}</p>{% endif %}
             <h3><a href="{{ webinar.url | relative_url }}">{{ webinar.title }}</a></h3>
             {% include webinar_speaker.html webinar=webinar class="home-event-card__speaker" %}
-            {% if webinar.registration_url and webinar.registration_url != "" %}
-              <div class="event-actions">
-                <a class="google-button" href="{{ webinar.registration_url }}" target="_blank" rel="noopener">Add to Calendar / Sign up</a>
-              </div>
-            {% endif %}
           </div>
+          {% if webinar.registration_url and webinar.registration_url != "" %}
+            <a class="google-button home-event-card__signup" href="{{ webinar.registration_url }}" target="_blank" rel="noopener" aria-label="Add to calendar or sign up for {{ webinar.title }}">Sign up</a>
+          {% endif %}
         </article>
       {% endif %}
     {% endfor %}
