@@ -142,15 +142,15 @@ p,
   grid-row:1 / span 4;
   align-self:center;
   justify-self:end;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
+  display:grid;
+  justify-items:stretch;
+  width:max-content;
   gap:8px;
   margin-top:0;
 }
 
 .home-upcoming-events .upcoming-event-card__actions .google-button{
-  width:auto;
+  width:100%;
   padding:6px 12px;
   font-size:.86rem;
   line-height:1.25;
@@ -292,8 +292,11 @@ p,
   .home-upcoming-events .upcoming-event-card__actions{
     grid-column:1;
     grid-row:auto;
+    display:flex;
     flex-direction:row;
     flex-wrap:wrap;
+    justify-self:start;
+    width:auto;
     margin-top:10px;
   }
 
