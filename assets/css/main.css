@@ -130,7 +130,7 @@ p{margin:0 0 12pt}
 .home-about__grid{display:grid;grid-template-columns:minmax(230px,.85fr) minmax(0,1.35fr);gap:48px;align-items:start}
 .home-about h2{text-align:left;color:#202124;font-size:clamp(2rem,3.8vw,3.2rem)}
 .home-quick-links{padding-top:28px}
-.home-link-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .home-link-card{display:flex;flex-direction:column;gap:8px;min-height:150px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow);color:#202124;text-decoration:none}
 .home-link-card:hover{box-shadow:var(--shadow-strong);text-decoration:none;transform:translateY(-1px);transition:.18s ease}
 .home-link-card span{font-family:Comfortaa,Arial,sans-serif;color:var(--gold);font-weight:700;font-size:1.05rem}
