@@ -15,13 +15,13 @@ title: Home
     </div>
   </div>
 </section>
-
 <section class="google-section alt home-upcoming-events">
   <div class="wrap">
     <div class="section-heading">
-      <p class="eyebrow">Upcoming webinars</p>
-      <h2>Upcoming Events</h2>
+      <p class="eyebrow">Upcoming events</p>
+      <h2>Upcoming Webinars</h2>
     </div>
+
 
     {% assign today = site.time | date: '%Y-%m-%d' %}
     {% assign webinars = site.webinars | sort: 'date' %}
@@ -36,7 +36,7 @@ title: Home
       {% endif %}
     {% endfor %}
     </div>
-
+    
     {% if upcoming_count == 0 %}
       <div class="upcoming-empty-state">
         <p>No upcoming webinars are listed yet.</p>
