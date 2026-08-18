@@ -16,7 +16,7 @@ title: Home
   </div>
 </section>
 
-<section class="google-section alt home-events">
+<section class="google-section alt home-upcoming-events">
   <div class="wrap">
     <div class="section-heading">
       <p class="eyebrow">Upcoming webinars</p>
@@ -25,33 +25,20 @@ title: Home
 
     {% assign today = site.time | date: '%Y-%m-%d' %}
     {% assign webinars = site.webinars | sort: 'date' %}
+    {% assign home_upcoming_abstract_limit = 140 %}
     {% assign upcoming_count = 0 %}
-    <div class="home-event-list">
+    <div class="upcoming-event-list">
     {% for webinar in webinars %}
       {% assign webinar_date = webinar.date | date: '%Y-%m-%d' %}
       {% if webinar_date >= today and webinar.published != false %}
         {% assign upcoming_count = upcoming_count | plus: 1 %}
-        <article class="home-event-card">
-          <div class="home-event-card__date" aria-label="{{ webinar.date | date: '%B %-d, %Y' }}">
-            <span class="home-event-card__month">{{ webinar.date | date: "%b" }}</span>
-            <span class="home-event-card__day">{{ webinar.date | date: "%d" }}</span>
-            <span class="home-event-card__year">{{ webinar.date | date: "%Y" }}</span>
-          </div>
-          <div class="home-event-card__content">
-            {% if webinar.time and webinar.time != "" %}<p class="home-event-card__time">{{ webinar.time }}</p>{% endif %}
-            <h3><a href="{{ webinar.url | relative_url }}">{{ webinar.title }}</a></h3>
-            {% include webinar_speaker.html webinar=webinar class="home-event-card__speaker" %}
-          </div>
-          {% if webinar.registration_url and webinar.registration_url != "" %}
-            <a class="google-button home-event-card__signup" href="{{ webinar.registration_url }}" target="_blank" rel="noopener" aria-label="Add to calendar or sign up for {{ webinar.title }}">Sign up</a>
-          {% endif %}
-        </article>
+        {% include webinar_card.html webinar=webinar mode="upcoming" abstract_limit=home_upcoming_abstract_limit details_label="Event details & resources" %}
       {% endif %}
     {% endfor %}
     </div>
 
     {% if upcoming_count == 0 %}
-      <div class="home-empty-state">
+      <div class="upcoming-empty-state">
         <p>No upcoming webinars are listed yet.</p>
       </div>
     {% endif %}

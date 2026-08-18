@@ -83,123 +83,6 @@ h4{
   letter-spacing:-.04em;
 }
 
-.google-section.home-events{
-  position:relative;
-  overflow:hidden;
-  padding-top:26px;
-  padding-bottom:30px;
-}
-
-.home-events:before{
-  display:none;
-}
-
-.home-events .section-heading{
-  margin-bottom:14px;
-}
-
-.home-events .section-heading .eyebrow{
-  margin-bottom:2px;
-}
-
-.home-events .section-heading h2{
-  margin-bottom:0;
-  font-size:1.65rem;
-}
-
-.home-event-list{
-  max-width:980px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:0;
-  gap:10px;
-}
-
-.home-event-card{
-  position:relative;
-  grid-template-columns:74px minmax(0,1fr) auto;
-  gap:14px;
-  align-items:center;
-  padding:12px 14px;
-  border:1px solid rgba(218,220,224,.86);
-  border-radius:12px;
-  box-shadow:0 1px 5px rgba(60,64,67,.08);
-}
-
-.home-event-card:before{
-  display:none;
-}
-
-.home-event-card:hover{
-  transform:translateY(-1px);
-  box-shadow:0 8px 20px rgba(60,64,67,.12);
-}
-
-.home-event-card__date{
-  min-height:64px;
-  border-radius:10px;
-  border:0;
-  background:linear-gradient(180deg,#ffffff 0%,#f2f6ff 100%);
-  box-shadow:inset 0 0 0 1px #e3e8f2;
-}
-
-.home-event-card__month,
-.home-event-card__year{
-  color:#5f6368;
-  font-size:.68rem;
-  font-weight:800;
-  letter-spacing:.08em;
-}
-
-.home-event-card__day{
-  font-size:1.65rem;
-  letter-spacing:0;
-}
-
-.home-event-card__time{
-  margin:0 0 2px!important;
-  color:#3c4043!important;
-  font-size:.92rem!important;
-  font-weight:700;
-  line-height:1.25!important;
-}
-
-.home-event-card__content h3{
-  max-width:760px;
-  margin-top:0;
-  margin-bottom:2px;
-  font-size:1.08rem;
-  line-height:1.25;
-  letter-spacing:0;
-}
-
-.home-event-card__content h3 a{
-  color:var(--gold);
-  text-decoration:none;
-}
-
-.home-event-card__content h3 a:hover{
-  text-decoration:underline;
-}
-
-.home-event-card__speaker{
-  margin:0!important;
-  font-size:.95rem!important;
-  line-height:1.35!important;
-}
-
-.home-event-card__content p{
-  max-width:720px;
-  color:#303134;
-}
-
-.home-event-card__signup{
-  align-self:center;
-  white-space:nowrap;
-  padding:7px 14px;
-  font-size:.92rem;
-}
-
 .event-actions{
   margin-top:18px;
 }
@@ -242,32 +125,6 @@ h4{
     font-size:clamp(2.65rem,9vw,4.5rem);
   }
 
-  .home-events:before{
-    display:none;
-  }
-
-  .home-event-card{
-    grid-template-columns:62px minmax(0,1fr);
-    gap:12px;
-    padding:12px;
-  }
-
-  .home-event-card:before{
-    display:none;
-  }
-
-  .home-event-card__date{
-    min-height:60px;
-    align-items:center;
-    padding:8px;
-  }
-
-  .home-event-card__signup{
-    grid-column:2;
-    justify-self:start;
-    margin-top:2px;
-  }
-
   .home-about h2{
     max-width:none;
   }
@@ -286,7 +143,4 @@ h4{
     font-size:1.08rem;
   }
 
-  .home-event-card{
-    border-radius:12px;
-  }
 }

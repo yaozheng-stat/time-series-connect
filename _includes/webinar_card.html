@@ -3,6 +3,7 @@
 {% assign card_class = mode | append: '-event-card' %}
 {% assign speaker_class = card_class | append: '__speaker' %}
 {% assign abstract_limit = include.abstract_limit | default: 220 %}
+{% assign details_label = include.details_label | default: 'Event details' %}
 {% assign display_title = webinar.title %}
 {% if mode == 'archive' and webinar.title == "Seminar details forthcoming" and webinar.speaker and webinar.speaker != "" %}
   {% assign display_title = webinar.speaker %}
@@ -35,7 +36,7 @@
     {% endif %}
     {% include archive_abstract.html webinar=webinar limit=abstract_limit %}
     <div class="{{ card_class }}__actions">
-      {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" registration_label="Sign up" %}
+      {% include webinar_buttons.html webinar=webinar primary_button_class="google-button" button_class="google-button outline" details_label=details_label registration_label="Sign up" %}
     </div>
   </div>
 </article>

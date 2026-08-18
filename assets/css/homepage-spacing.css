@@ -54,6 +54,84 @@ p,
   margin-bottom:18px;
 }
 
+.home-upcoming-events{
+  padding-top:24px;
+  padding-bottom:32px;
+}
+
+.home-upcoming-events .section-heading{
+  margin-bottom:14px;
+}
+
+.home-upcoming-events .upcoming-event-list{
+  max-width:900px;
+  gap:14px;
+  margin-top:16px;
+}
+
+.home-upcoming-events .upcoming-event-card{
+  grid-template-columns:96px minmax(0,1fr);
+  gap:18px;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:0 4px 16px rgba(60,64,67,.08);
+}
+
+.home-upcoming-events .upcoming-event-card:hover{
+  box-shadow:0 10px 26px rgba(60,64,67,.12);
+}
+
+.home-upcoming-events .upcoming-event-card__date{
+  min-height:96px;
+  border-radius:14px;
+}
+
+.home-upcoming-events .upcoming-event-card__month,
+.home-upcoming-events .upcoming-event-card__year{
+  font-size:.72rem;
+}
+
+.home-upcoming-events .upcoming-event-card__day{
+  font-size:2.15rem;
+  letter-spacing:0;
+}
+
+.home-upcoming-events .upcoming-event-card__meta{
+  margin-bottom:6px;
+}
+
+.home-upcoming-events .upcoming-event-card h2{
+  margin-bottom:6px;
+  font-size:1.28rem;
+  line-height:1.22;
+}
+
+.home-upcoming-events .webinar-card-speaker{
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.home-upcoming-events .webinar-card-speaker img{
+  width:50px;
+  height:50px;
+}
+
+.home-upcoming-events .upcoming-event-card p{
+  font-size:.98rem;
+  line-height:1.48;
+  margin-bottom:6px;
+}
+
+.home-upcoming-events .upcoming-event-card__actions{
+  gap:8px;
+  margin-top:10px;
+}
+
+.home-upcoming-events .upcoming-event-card__actions .google-button{
+  padding:6px 12px;
+  font-size:.9rem;
+}
+
 .home-quick-links{
   padding-top:10px;
   padding-bottom:30px;
@@ -123,6 +201,22 @@ p,
   .home-about__grid{
     gap:16px;
   }
+
+  .home-upcoming-events .upcoming-event-card{
+    grid-template-columns:76px minmax(0,1fr);
+    gap:14px;
+    padding:16px;
+  }
+
+  .home-upcoming-events .upcoming-event-card__date{
+    align-items:center;
+    min-height:76px;
+    padding:10px;
+  }
+
+  .home-upcoming-events .upcoming-event-card__day{
+    font-size:1.75rem;
+  }
 }
 
 @media(max-width:560px){
@@ -142,6 +236,16 @@ p,
 
   .home-link-card{
     min-height:auto;
+  }
+
+  .home-upcoming-events .upcoming-event-card{
+    grid-template-columns:1fr;
+  }
+
+  .home-upcoming-events .upcoming-event-card__date{
+    align-items:flex-start;
+    min-height:auto;
+    padding:12px 14px;
   }
 }
 

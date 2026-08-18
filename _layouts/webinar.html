@@ -1,6 +1,12 @@
 ---
 layout: default
 ---
+{% assign today = site.time | date: '%Y-%m-%d' %}
+{% assign webinar_date = page.date | date: '%Y-%m-%d' %}
+{% assign show_detail_headshot = false %}
+{% if webinar_date >= today and page.speaker_image and page.speaker_image != "" %}
+  {% assign show_detail_headshot = true %}
+{% endif %}
 <section class="page-body plain-page">
   <div class="wrap two-column">
     <aside class="sidebar-card">
@@ -13,7 +19,12 @@ layout: default
       <header class="plain-page-title">
         <p class="eyebrow">Webinar</p>
         <h1>{{ page.title }}</h1>
-        {% include webinar_speaker.html webinar=page class="muted" %}
+        <div class="webinar-detail-speaker">
+          {% if show_detail_headshot %}
+            <img src="{{ page.speaker_image | relative_url }}" alt="{{ page.speaker }}">
+          {% endif %}
+          {% include webinar_speaker.html webinar=page class="muted" %}
+        </div>
       </header>
       {{ content }}
     </article>
