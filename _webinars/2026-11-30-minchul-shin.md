@@ -1,5 +1,5 @@
 ---
-title: "Text Data in Structural Macroeconomic Analysis"
+title: "Text data in structural macroeconomic analysis"
 speaker: "Minchul Shin"
 affiliation: "Senior Economic Advisor and Machine Learning Economist, Research Department, Federal Reserve Bank of Philadelphia"
 date: 2026-11-30
