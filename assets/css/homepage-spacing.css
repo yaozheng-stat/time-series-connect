@@ -79,7 +79,7 @@ p,
 
 .home-upcoming-events .upcoming-event-card__body{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 190px;
+  grid-template-columns:minmax(0,1fr) max-content;
   column-gap:16px;
   align-items:center;
 }
@@ -141,14 +141,16 @@ p,
   grid-column:2;
   grid-row:1 / span 4;
   align-self:center;
+  justify-self:end;
   display:flex;
   flex-direction:column;
+  align-items:flex-end;
   gap:8px;
   margin-top:0;
 }
 
 .home-upcoming-events .upcoming-event-card__actions .google-button{
-  width:100%;
+  width:auto;
   padding:6px 12px;
   font-size:.86rem;
   line-height:1.25;
@@ -239,7 +241,7 @@ p,
   }
 
   .home-upcoming-events .upcoming-event-card__body{
-    grid-template-columns:minmax(0,1fr) 190px;
+    grid-template-columns:minmax(0,1fr) max-content;
     column-gap:12px;
   }
 
