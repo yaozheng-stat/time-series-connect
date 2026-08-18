@@ -51,18 +51,132 @@
   padding:24px 0 21px;
 }
 
+.site-menu{
+  display:none;
+}
+
+.site-menu summary{
+  list-style:none;
+}
+
+.site-menu summary::-webkit-details-marker{
+  display:none;
+}
+
 .home-about{
   padding-top:56px;
 }
 
 @media(max-width:900px){
   .masthead__inner{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
     padding-left:16px;
     padding-right:28px;
   }
 
   .site-nav a{
     padding:0 0 8px;
+  }
+}
+
+@media(max-width:780px){
+  .site-nav{
+    display:none;
+  }
+
+  .site-menu{
+    display:block;
+    position:relative;
+    margin-left:auto;
+    flex:0 0 auto;
+  }
+
+  .site-menu summary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    min-height:38px;
+    padding:7px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:#fff;
+    color:#202124;
+    font-family:'Source Sans 3',Roboto,Arial,sans-serif;
+    font-size:.95rem;
+    font-weight:700;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:0 1px 2px rgba(60,64,67,.10);
+  }
+
+  .site-menu[open] summary{
+    border-color:rgba(17,87,206,.34);
+    color:var(--blue);
+  }
+
+  .site-menu__icon,
+  .site-menu__icon:before,
+  .site-menu__icon:after{
+    display:block;
+    width:16px;
+    height:2px;
+    border-radius:999px;
+    background:currentColor;
+  }
+
+  .site-menu__icon{
+    position:relative;
+  }
+
+  .site-menu__icon:before,
+  .site-menu__icon:after{
+    content:"";
+    position:absolute;
+    left:0;
+  }
+
+  .site-menu__icon:before{
+    top:-5px;
+  }
+
+  .site-menu__icon:after{
+    top:5px;
+  }
+
+  .site-menu__links{
+    position:absolute;
+    top:calc(100% + 10px);
+    right:0;
+    z-index:40;
+    display:grid;
+    gap:2px;
+    width:min(230px,calc(100vw - 40px));
+    padding:8px;
+    border:1px solid rgba(218,220,224,.95);
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 16px 40px rgba(60,64,67,.18);
+  }
+
+  .site-menu__links a{
+    display:block;
+    padding:10px 12px;
+    border-radius:10px;
+    color:#3c4043;
+    font-family:'Source Sans 3',Roboto,Arial,sans-serif;
+    font-size:1rem;
+    font-weight:700;
+    line-height:1.2;
+    text-decoration:none;
+  }
+
+  .site-menu__links a:hover,
+  .site-menu__links a.active{
+    background:#f1f6ff;
+    color:var(--blue);
+    text-decoration:none;
   }
 }
 

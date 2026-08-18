@@ -9,5 +9,16 @@
         <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
       {% endfor %}
     </nav>
+    <details class="site-menu">
+      <summary>
+        <span class="site-menu__icon" aria-hidden="true"></span>
+        <span>Menu</span>
+      </summary>
+      <nav class="site-menu__links" aria-label="Mobile navigation">
+        {% for item in site.data.navigation.main %}
+          <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+      </nav>
+    </details>
   </div>
 </header>
