@@ -2,6 +2,8 @@
 
 This generator creates a one-page, content-height Time Series Connect webinar flyer from a webinar Markdown file in `_webinars/`.
 
+It includes every `##` section from the event details page body except speaker-bio sections. For example, `Abstract`, `Software`, `References`, and `Format` are included automatically, while `Speaker Bio` is skipped. Markdown links inside included sections are preserved as clickable PDF links.
+
 ## Install
 
 ```bash
@@ -72,7 +74,7 @@ speaker_image: "/assets/images/speakers/speaker-image.jpg"
 registration_url: "https://..."
 ```
 
-The abstract must appear under a `## Abstract` heading in the Markdown body.
+The event body should use `##` headings. Every body section is included in the flyer except bio-style sections such as `## Speaker Bio`, `## Bio`, or `## About the Speaker`.
 
 ## Template Assets
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import html
 import re
 import sys
 from dataclasses import dataclass
@@ -13,7 +14,7 @@ from pathlib import Path
 from urllib.parse import urljoin
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.utils import ImageReader
@@ -29,6 +30,25 @@ DEFAULT_FOOTER = (
     "Time Series Connect Webinar | ASA Business & Economic Statistics Section "
     "& University of Connecticut"
 )
+BIO_SECTION_TITLES = {
+    "bio",
+    "biography",
+    "speaker bio",
+    "speaker biography",
+    "about the speaker",
+}
+
+
+@dataclass(frozen=True)
+class FlyerBlock:
+    kind: str
+    markup: str
+
+
+@dataclass(frozen=True)
+class FlyerSection:
+    title: str
+    blocks: list[FlyerBlock]
 
 
 @dataclass(frozen=True)
@@ -41,7 +61,7 @@ class Webinar:
     permalink: str
     registration_url: str
     speaker_image: Path | None
-    abstract_parts: list[str]
+    sections: list[FlyerSection]
 
 
 def parse_args() -> argparse.Namespace:
@@ -155,30 +175,118 @@ def clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def markdown_to_plain(text: str) -> str:
+def normalize_inline_text(text: str) -> str:
+    replacements = {
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2011": "-",
+        "\u00a0": " ",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return re.sub(r"\s+", " ", text)
+
+
+def strip_html_comments(text: str) -> str:
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1", text)
-    text = re.sub(r"[*_`#>]", "", text)
-    return clean_text(text)
+    return text.strip()
 
 
-def extract_section(body: str, heading: str) -> str:
-    pattern = re.compile(
-        rf"^##\s+{re.escape(heading)}\s*$([\s\S]*?)(?=^##\s+|\Z)",
-        flags=re.M,
-    )
-    match = pattern.search(body)
-    return match.group(1).strip() if match else ""
+def strip_inline_markdown(text: str) -> str:
+    text = re.sub(r"`([^`]+)`", r"\1", text)
+    text = re.sub(r"\*\*([^*]+)\*\*", r"\1", text)
+    text = re.sub(r"__([^_]+)__", r"\1", text)
+    text = re.sub(r"\*([^*]+)\*", r"\1", text)
+    text = re.sub(r"_([^_]+)_", r"\1", text)
+    return text
 
 
-def abstract_paragraphs(body: str) -> list[str]:
-    abstract = extract_section(body, "Abstract")
-    paragraphs: list[str] = []
-    for block in re.split(r"\n\s*\n", abstract):
-        cleaned = markdown_to_plain(block)
-        if cleaned:
-            paragraphs.append(cleaned)
-    return paragraphs
+def escape_reportlab_text(text: str) -> str:
+    return html.escape(strip_inline_markdown(clean_text(text)), quote=False)
+
+
+def escape_reportlab_fragment(text: str) -> str:
+    return html.escape(strip_inline_markdown(normalize_inline_text(text)), quote=False)
+
+
+def reportlab_link(label: str, url: str) -> str:
+    safe_label = escape_reportlab_text(label)
+    safe_url = html.escape(clean_text(url), quote=True)
+    return f'<link href="{safe_url}" color="#006CB8"><u>{safe_label}</u></link>'
+
+
+def link_bare_urls(text: str) -> str:
+    url_pattern = re.compile(r"(?<![\"'=])(https?://[^\s<]+)")
+    output: list[str] = []
+    last = 0
+    for match in url_pattern.finditer(text):
+        output.append(escape_reportlab_fragment(text[last : match.start()]))
+        url = match.group(1).rstrip(".,;)")
+        trailing = match.group(1)[len(url) :]
+        output.append(reportlab_link(url, url))
+        output.append(escape_reportlab_fragment(trailing))
+        last = match.end()
+    output.append(escape_reportlab_fragment(text[last:]))
+    return "".join(output)
+
+
+def markdown_inline_to_reportlab(text: str) -> str:
+    text = strip_html_comments(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    if not text:
+        return ""
+    link_pattern = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+    output: list[str] = []
+    last = 0
+    for match in link_pattern.finditer(text):
+        output.append(link_bare_urls(text[last : match.start()]))
+        output.append(reportlab_link(match.group(1), match.group(2)))
+        last = match.end()
+    output.append(link_bare_urls(text[last:]))
+    return "".join(output).strip()
+
+
+def is_bio_section(title: str) -> bool:
+    normalized = clean_text(title).lower()
+    return normalized in BIO_SECTION_TITLES
+
+
+def parse_section_blocks(section_content: str) -> list[FlyerBlock]:
+    section_content = strip_html_comments(section_content)
+    blocks: list[FlyerBlock] = []
+    for chunk in re.split(r"\n\s*\n", section_content):
+        lines = [line.strip() for line in chunk.splitlines() if line.strip()]
+        if not lines:
+            continue
+        if all(line.startswith(("- ", "* ")) for line in lines):
+            for line in lines:
+                markup = markdown_inline_to_reportlab(line[2:])
+                if markup:
+                    blocks.append(FlyerBlock("bullet", markup))
+        else:
+            markup = markdown_inline_to_reportlab(" ".join(lines))
+            if markup:
+                blocks.append(FlyerBlock("paragraph", markup))
+    return blocks
+
+
+def body_sections(body: str) -> list[FlyerSection]:
+    headings = list(re.finditer(r"^##\s+(.+?)\s*$", body, flags=re.M))
+    sections: list[FlyerSection] = []
+    for index, heading in enumerate(headings):
+        title = clean_text(heading.group(1))
+        start = heading.end()
+        end = headings[index + 1].start() if index + 1 < len(headings) else len(body)
+        if is_bio_section(title):
+            continue
+        blocks = parse_section_blocks(body[start:end])
+        if blocks:
+            sections.append(FlyerSection(title, blocks))
+    return sections
 
 
 def format_date(raw_date: str) -> str:
@@ -236,7 +344,7 @@ def load_webinar(path: Path, include_headshot: bool) -> Webinar:
         permalink=clean_text(data.get("permalink", "")),
         registration_url=clean_text(data.get("registration_url", "")),
         speaker_image=speaker_image,
-        abstract_parts=abstract_paragraphs(body),
+        sections=body_sections(body),
     )
 
 
@@ -245,29 +353,25 @@ def image_aspect(path: Path) -> float:
     return width / height
 
 
-def xml_escape(text: str) -> str:
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+def make_para(markup: str, style: ParagraphStyle) -> Paragraph:
+    return Paragraph(markup, style)
 
 
-def make_para(text: str, style: ParagraphStyle) -> Paragraph:
-    return Paragraph(xml_escape(text), style)
-
-
-def wrap_height(text: str, style: ParagraphStyle, width: float) -> float:
-    paragraph = make_para(text, style)
+def wrap_height(markup: str, style: ParagraphStyle, width: float) -> float:
+    paragraph = make_para(markup, style)
     _, height = paragraph.wrap(width, 10000)
     return height
 
 
 def draw_para(
     pdf: canvas.Canvas,
-    text: str,
+    markup: str,
     style: ParagraphStyle,
     x: float,
     y_top: float,
     width: float,
 ) -> float:
-    paragraph = make_para(text, style)
+    paragraph = make_para(markup, style)
     _, height = paragraph.wrap(width, 10000)
     paragraph.drawOn(pdf, x, y_top - height)
     return height
@@ -352,13 +456,31 @@ def generate_flyer(
         "section": ParagraphStyle(
             "section", fontName="Helvetica-Bold", fontSize=18, leading=22, textColor=navy
         ),
-        "abstract": ParagraphStyle(
-            "abstract",
+        "body": ParagraphStyle(
+            "body",
+            fontName="Helvetica",
+            fontSize=13.2,
+            leading=16.6,
+            textColor=text,
+            alignment=TA_LEFT,
+        ),
+        "abstract_body": ParagraphStyle(
+            "abstract_body",
             fontName="Helvetica",
             fontSize=13.2,
             leading=16.6,
             textColor=text,
             alignment=TA_JUSTIFY,
+        ),
+        "bullet": ParagraphStyle(
+            "bullet",
+            fontName="Helvetica",
+            fontSize=13.2,
+            leading=16.6,
+            textColor=text,
+            alignment=TA_LEFT,
+            leftIndent=14,
+            firstLineIndent=-10,
         ),
         "footer": ParagraphStyle(
             "footer",
@@ -370,9 +492,16 @@ def generate_flyer(
         ),
     }
 
+    def block_style_name(section: FlyerSection, block: FlyerBlock) -> str:
+        if block.kind == "bullet":
+            return "bullet"
+        if clean_text(section.title).lower() == "abstract":
+            return "abstract_body"
+        return "body"
+
     content_w = page_width - 2 * margin_x
-    label_h = wrap_height(label, styles["label"], content_w)
-    title_h = wrap_height(webinar.title, styles["title"], content_w)
+    label_h = wrap_height(escape_reportlab_text(label), styles["label"], content_w)
+    title_h = wrap_height(escape_reportlab_text(webinar.title), styles["title"], content_w)
     head_w = 86
     head_h = 103
     speaker_gap = 18 if webinar.speaker_image else 0
@@ -380,15 +509,26 @@ def generate_flyer(
     speaker_text_w = content_w - speaker_image_w - speaker_gap
     speaker_h = max(
         head_h if webinar.speaker_image else 0,
-        wrap_height(webinar.speaker, styles["speaker"], speaker_text_w)
+        wrap_height(escape_reportlab_text(webinar.speaker), styles["speaker"], speaker_text_w)
         + 8
-        + wrap_height(webinar.affiliation, styles["affiliation"], speaker_text_w),
+        + wrap_height(
+            escape_reportlab_text(webinar.affiliation),
+            styles["affiliation"],
+            speaker_text_w,
+        ),
     )
-    abstract_h = sum(
-        wrap_height(part, styles["abstract"], content_w) for part in webinar.abstract_parts
-    ) + max(0, len(webinar.abstract_parts) - 1) * 8
-    section_h = wrap_height("Abstract", styles["section"], content_w)
-    footer_h = wrap_height(footer, styles["footer"], content_w)
+    sections_h = 0
+    for section_index, section in enumerate(webinar.sections):
+        sections_h += wrap_height(escape_reportlab_text(section.title), styles["section"], content_w) + 7
+        for block_index, block in enumerate(section.blocks):
+            style_name = block_style_name(section, block)
+            block_markup = "- " + block.markup if block.kind == "bullet" else block.markup
+            sections_h += wrap_height(block_markup, styles[style_name], content_w)
+            if block_index < len(section.blocks) - 1:
+                sections_h += 8 if block.kind != "bullet" else 5
+        if section_index < len(webinar.sections) - 1:
+            sections_h += 17
+    footer_h = wrap_height(escape_reportlab_text(footer), styles["footer"], content_w)
     button_h = 34
 
     content_after_header = (
@@ -403,9 +543,7 @@ def generate_flyer(
         + 17
         + button_h
         + 20
-        + section_h
-        + 7
-        + abstract_h
+        + sections_h
         + 20
         + 1
         + 9
@@ -488,9 +626,9 @@ def generate_flyer(
     )
 
     y = header_y - 18
-    h = draw_para(pdf, label, styles["label"], margin_x, y, content_w)
+    h = draw_para(pdf, escape_reportlab_text(label), styles["label"], margin_x, y, content_w)
     y -= h + 8
-    h = draw_para(pdf, webinar.title, styles["title"], margin_x, y, content_w)
+    h = draw_para(pdf, escape_reportlab_text(webinar.title), styles["title"], margin_x, y, content_w)
     y -= h + 15
 
     row_h = 64
@@ -532,10 +670,17 @@ def generate_flyer(
         pdf.setLineWidth(0.8)
         pdf.rect(head_x, head_y, head_w, head_h, fill=0, stroke=1)
         speaker_text_x = head_x + head_w + speaker_gap
-    h1 = draw_para(pdf, webinar.speaker, styles["speaker"], speaker_text_x, y - 3, speaker_text_w)
+    h1 = draw_para(
+        pdf,
+        escape_reportlab_text(webinar.speaker),
+        styles["speaker"],
+        speaker_text_x,
+        y - 3,
+        speaker_text_w,
+    )
     draw_para(
         pdf,
-        webinar.affiliation,
+        escape_reportlab_text(webinar.affiliation),
         styles["affiliation"],
         speaker_text_x,
         y - 3 - h1 - 8,
@@ -556,20 +701,32 @@ def generate_flyer(
         x += width + button_gap
     y -= button_h + 20
 
-    h = draw_para(pdf, "Abstract", styles["section"], margin_x, y, content_w)
-    y -= h + 7
-    for index, part in enumerate(webinar.abstract_parts):
-        h = draw_para(pdf, part, styles["abstract"], margin_x, y, content_w)
-        y -= h
-        if index < len(webinar.abstract_parts) - 1:
-            y -= 8
+    for section_index, section in enumerate(webinar.sections):
+        h = draw_para(
+            pdf,
+            escape_reportlab_text(section.title),
+            styles["section"],
+            margin_x,
+            y,
+            content_w,
+        )
+        y -= h + 7
+        for block_index, block in enumerate(section.blocks):
+            style_name = block_style_name(section, block)
+            block_markup = "- " + block.markup if block.kind == "bullet" else block.markup
+            h = draw_para(pdf, block_markup, styles[style_name], margin_x, y, content_w)
+            y -= h
+            if block_index < len(section.blocks) - 1:
+                y -= 8 if block.kind != "bullet" else 5
+        if section_index < len(webinar.sections) - 1:
+            y -= 17
 
     y -= 20
     pdf.setStrokeColor(line)
     pdf.setLineWidth(0.7)
     pdf.line(margin_x, y, page_width - margin_x, y)
     y -= 9
-    draw_para(pdf, footer, styles["footer"], margin_x, y, content_w)
+    draw_para(pdf, escape_reportlab_text(footer), styles["footer"], margin_x, y, content_w)
 
     pdf.showPage()
     pdf.save()
