@@ -54,7 +54,7 @@ p{margin:0 0 12pt}
   content:"";
   display:block;
   height:10px;
-  background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.04)),url('../images/de2bb4988d4de55f5693b9c26674f914.jpg');
+  background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.04)),url('../images/TSC-background.jpg');
   background-size:cover;
   background-position:center 42%;
 }
@@ -75,7 +75,7 @@ p{margin:0 0 12pt}
 /* Legacy home hero styles kept for older pages, but the homepage no longer uses them. */
 .google-hero{
   min-height:170px;display:flex;align-items:center;
-  background:linear-gradient(0deg,rgba(0,0,0,.18),rgba(0,0,0,.18)),url('../images/de2bb4988d4de55f5693b9c26674f914.jpg');
+  background:linear-gradient(0deg,rgba(0,0,0,.18),rgba(0,0,0,.18)),url('../images/TSC-background.jpg');
   background-size:cover;background-position:center center;color:#fff;
 }
 .hero-title-block{padding:22px 28px;text-align:center}

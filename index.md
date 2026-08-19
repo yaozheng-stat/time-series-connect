@@ -73,11 +73,11 @@ title: Home
     <h2>Organized by</h2>
     <div class="partner-logos" aria-label="Organizing partners">
       <a class="partner-card uconn-card" href="https://uconn.edu/" target="_blank" rel="noopener">
-        <img src="{{ '/assets/images/uconn-spring-fog.jpg' | relative_url }}" alt="University of Connecticut">
+        <img src="{{ '/assets/images/UConn-image.jpg' | relative_url }}" alt="University of Connecticut">
         <span>University of Connecticut</span>
       </a>
       <a class="partner-card asa-card" href="https://community.amstat.org/businessandeconomicstatisticssection/home" target="_blank" rel="noopener">
-        <img src="{{ '/assets/images/84ef319a0cdeb09b89f0d86d22a5b23c.jpg' | relative_url }}" alt="ASA Business and Economic Statistics Section">
+        <img src="{{ '/assets/images/ASA-BES-logo.jpg' | relative_url }}" alt="ASA Business and Economic Statistics Section">
       </a>
     </div>
   </div>
